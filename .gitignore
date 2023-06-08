@@ -1,0 +1,19 @@
+faceQT/
+
+# Ignore Python binaries
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Python virtual environments
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+Lib
+Scripts
+
+dist/
+build/
+face_matcher_app.spec

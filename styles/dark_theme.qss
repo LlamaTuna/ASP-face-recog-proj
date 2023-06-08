@@ -1,0 +1,17 @@
+QWidget {
+    background-color: #2D2D2D;
+    color: #FFFFFF;
+}
+QLineEdit, QTableWidget, QHeaderView::section {
+    background-color: #353535;
+    color: #FFFFFF;
+    border: 1px solid #5A5A5A;
+}
+QPushButton {
+    background-color: #353535;
+    color: #FFFFFF;
+    border: 1px solid #5A5A5A;
+}
+QPushButton:hover {
+    background-color: #5A5A5A;
+}
