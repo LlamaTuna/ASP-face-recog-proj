@@ -1,4 +1,4 @@
-faceQT/
+ASP-face-recog/
 
 # Ignore Python binaries
 *.pyc
@@ -16,4 +16,4 @@ Scripts
 
 dist/
 build/
-face_matcher_app.spec
+face_matcher_ASP_1.0.spec
