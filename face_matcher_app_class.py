@@ -44,10 +44,16 @@ class FaceMatcherApp(QMainWindow):
     def get_matched_face_by_row(self, row):
         if row >= 0 and row < self.result_table.rowCount():
             resized_image_name = self.result_table.item(row, 4).text()
-            matched_face_path = os.path.join(self.output_folder_edit.text(), resized_image_name)
+            
+            # assume resized_image_name is a numpy filename, 
+            # change it to an image filename according to your convention
+            image_file_name = resized_image_name.replace('.npy', '.png')  # use your actual extension here
+            matched_face_path = os.path.join(self.output_folder_edit.text(), image_file_name)
             matched_face = cv2.imread(matched_face_path)
+
             return matched_face
         return None
+
 
     def previous_matched_face(self):
         current_row = self.result_table.currentRow()
@@ -238,14 +244,16 @@ class FaceMatcherApp(QMainWindow):
         print("Finished find_match")
 
 
+
     def on_processing_finished(self, matching_faces):
+        print(f"matching_faces: {matching_faces}")  # Debugging line
         print("Processing finished")
         if len(matching_faces) > 0:
             self.result_table.setColumnCount(5)
-            self.result_table.setHorizontalHeaderLabels(['Match', 'Similarity', 'Original Image File', 'Original Image Hash', 'Resized Image File'])
+            self.result_table.setHorizontalHeaderLabels(['Match', 'Similarity', 'Original Image File', 'Image Hash', 'Resized Image'])
             self.result_table.setRowCount(len(matching_faces))
 
-            for i, (img_hash, original_image_name, matched_face, similarity, resized_image_name) in enumerate(matching_faces):
+            for i, (img_hash, original_image_name, face_vector, similarity, resized_image_name) in enumerate(matching_faces):
                 self.result_table.setItem(i, 0, MatchTableWidgetItem(f"Match {i + 1}"))
                 self.result_table.setItem(i, 1, NumericTableWidgetItem(f"{similarity * 100:.2f}%"))
                 self.result_table.setItem(i, 2, QTableWidgetItem(original_image_name))
@@ -253,33 +261,37 @@ class FaceMatcherApp(QMainWindow):
                 self.result_table.setItem(i, 4, QTableWidgetItem(resized_image_name))
 
                 if i == 0:
-                    self.display_matched_face(matched_face, similarity, original_image_name)
+                    matched_face_path = os.path.join(self.output_folder_edit.text(), resized_image_name)
+                    matched_face = cv2.imread(matched_face_path)
+                    if matched_face is not None:
+                        self.display_matched_face(matched_face, similarity, original_image_name)
 
             self.result_table.resizeColumnsToContents()
         else:
             self.result_table.setRowCount(0)
             self.result_table.setColumnCount(0)
 
-        print("Finished find_match")
+
+    print("Finished on_processing_finished")
 
 
     def display_selected_matched_face(self):
         current_row = self.result_table.currentRow()
-        if current_row >= 0:
+        if current_row != -1:
+            print("Displaying selected matched face")
             img_hash = self.result_table.item(current_row, 3).text()
             resized_image_name = self.result_table.item(current_row, 4).text()
-            similarity = float(self.result_table.item(current_row, 1).text().rstrip('%')) / 100
-            original_image_name = self.result_table.item(current_row, 2).text()
+            image_file_name = resized_image_name.replace('.npy', '.png')  # Adjust to your actual extension
 
-            matched_face_path = os.path.join(self.output_folder_edit.text(), resized_image_name)
+            matched_face_path = os.path.join(self.output_folder_edit.text(), image_file_name)
             matched_face = cv2.imread(matched_face_path)
 
-            if matched_face is not None:
-                self.display_matched_face(matched_face, similarity, original_image_name)
-            else:
-                print(f"Error: Could not load matched face image at '{matched_face_path}'")
+            similarity = float(self.result_table.item(current_row, 1).text().replace('%', '')) / 100.0
+            original_image_name = self.result_table.item(current_row, 2).text()
 
-        print("Finished find_match")
+            self.display_matched_face(matched_face, similarity, original_image_name)
+            print("Finished displaying selected matched face")
+
 
     def update_progress_bar(self, progress):
         self.progress_bar.setValue(int(progress))

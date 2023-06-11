@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QThread, pyqtSignal
-from face_detection import save_faces_from_folder, find_matching_face
+from face_detection import save_faces_from_folder, find_matching_face, face_detector  # Import face_detector
 
 class FaceProcessingThread(QThread):
     progress_signal = pyqtSignal(int)
@@ -12,8 +12,13 @@ class FaceProcessingThread(QThread):
         self.image_to_search = image_to_search
 
     def run(self):
-        face_data = save_faces_from_folder(folder_path=self.input_folder, output_folder=self.output_folder, face_cascade=None, progress_callback=self.update_progress)
-        matching_faces = find_matching_face(self.image_to_search, face_data)
+        face_data = save_faces_from_folder(
+            folder_path=self.input_folder, 
+            output_folder=self.output_folder, 
+            face_detector=face_detector,  # Pass face_detector here
+            progress_callback=self.update_progress
+        )
+        matching_faces = find_matching_face(self.image_to_search, face_data, face_detector)  # Pass face_detector here too
         self.processing_done.emit(matching_faces)  # Emit the custom signal instead
 
     def update_progress(self, progress):

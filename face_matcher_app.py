@@ -14,7 +14,7 @@ if getattr(sys, 'frozen', False):
     sys.path.insert(0, library_path)
 
 if pyqt5_path in sys.path:
-    sys.path.remove(pyqt5_path)
+    sys.path.remove(pyqt5_path) 
 
 dark_theme_path = os.path.join(app_path, "styles", "dark_theme.qss")
 
