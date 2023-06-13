@@ -10,7 +10,7 @@ a = Analysis(
     binaries=[],
     datas=[],
     hiddenimports=[],
-    hookspath=[],
+    hookspath=['.'],  # This is assuming that hook-mtcnn.py is in the same directory as the .spec file
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
@@ -19,6 +19,7 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
+
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(
