@@ -1,5 +1,7 @@
 ASP-face-recog/
 
+debug.log
+
 # Ignore Python binaries
 *.pyc
 *.pyo
