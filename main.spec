@@ -8,9 +8,9 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('ASP-face-recog\\Lib\\site-packages\\mtcnn\\data\\mtcnn_weights.npy', 'mtcnn/data'), ('styles\\dark_theme.qss', 'styles')],
     hiddenimports=[],
-    hookspath=['.'],  # This is assuming that hook-mtcnn.py is in the same directory as the .spec file
+    hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
@@ -19,7 +19,6 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
-
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(
@@ -36,7 +35,7 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,

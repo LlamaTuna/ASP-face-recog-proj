@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt6.QtWidgets import QTableWidgetItem
 
 class NumericTableWidgetItem(QTableWidgetItem):
     def __init__(self, value):
