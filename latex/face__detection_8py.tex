@@ -1,0 +1,39 @@
+\doxysection{face\+\_\+detection.\+py File Reference}
+\hypertarget{face__detection_8py}{}\label{face__detection_8py}\index{face\_detection.py@{face\_detection.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceface__detection}{face\+\_\+detection}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a85abcfd5c6ba441f124adea60769ad7c}{face\+\_\+detection.\+get\+\_\+image\+\_\+exif\+\_\+data}} (image\+\_\+path)
+\item 
+\mbox{\hyperlink{namespaceface__detection_a48a449463b19c72fdd388de1fc17820c}{face\+\_\+detection.\+resize\+\_\+image\+\_\+with\+\_\+aspect\+\_\+ratio}} (img, size)
+\item 
+\mbox{\hyperlink{namespaceface__detection_a372ee39ad03355ff6f1f3afd7bf68d11}{face\+\_\+detection.\+convert\+\_\+image\+\_\+to\+\_\+vector}} (img)
+\item 
+\mbox{\hyperlink{namespaceface__detection_a85ad83332b14063df9166560afe4ceb3}{face\+\_\+detection.\+save\+\_\+faces\+\_\+from\+\_\+folder}} (folder\+\_\+path, \mbox{\hyperlink{namespaceface__detection_a4b31a07c379b2bdaaffe760451d4a766}{face\+\_\+detector}}, \mbox{\hyperlink{namespaceface__detection_ad74ed4d139862a3d5aa2af04b5477d35}{output\+\_\+folder}}, progress\+\_\+callback=None)
+\item 
+\mbox{\hyperlink{namespaceface__detection_ae6add67aed2f1f4ecd1fdc60b0fe6f0b}{face\+\_\+detection.\+find\+\_\+matching\+\_\+face}} (image\+\_\+path, face\+\_\+data, \mbox{\hyperlink{namespaceface__detection_a4b31a07c379b2bdaaffe760451d4a766}{face\+\_\+detector}}, threshold=0.\+5)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a0c237df4c13530e87b7893b88d0c404a}{face\+\_\+detection.\+filename}}
+\item 
+\mbox{\hyperlink{namespaceface__detection_ae8d8fe465dd8930a53ecdeb082298b20}{face\+\_\+detection.\+filemode}}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a69bd8ebcb5415bffd6f32e85eb8ee11a}{face\+\_\+detection.\+level}}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a04c4ca4480c1838401c0936d33096ecf}{face\+\_\+detection.\+format}}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a4fe6ffed259009b5df3ffae81fcd08c1}{face\+\_\+detection.\+logger}} = logging.\+get\+Logger()
+\item 
+str \mbox{\hyperlink{namespaceface__detection_ad74ed4d139862a3d5aa2af04b5477d35}{face\+\_\+detection.\+output\+\_\+folder}} = \"{}./output/\"{}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a4b31a07c379b2bdaaffe760451d4a766}{face\+\_\+detection.\+face\+\_\+detector}} = MTCNN()
+\item 
+\mbox{\hyperlink{namespaceface__detection_ada631b953bf3565f903d8b994c2f2931}{face\+\_\+detection.\+resnet\+\_\+model}} = Res\+Net152(weights=\textquotesingle{}imagenet\textquotesingle{}, include\+\_\+top=False)
+\end{DoxyCompactItemize}

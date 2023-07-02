@@ -1,0 +1,847 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="classface__matcher__app__class_1_1_face_matcher_app" kind="class" language="Python" prot="public">
+    <compoundname>face_matcher_app_class::FaceMatcherApp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QMainWindow</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a21d608052d95e4e5e42ef19c1398a875" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::face_data</definition>
+        <argsstring></argsstring>
+        <name>face_data</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.face_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="39" column="1" bodyfile="face_matcher_app_class.py" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a586c12f7ca335c3910aec127a3e63d01" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::dark_theme_enabled</definition>
+        <argsstring></argsstring>
+        <name>dark_theme_enabled</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.dark_theme_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="40" column="1" bodyfile="face_matcher_app_class.py" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a868dfea8650202aff2059816f2db3d9c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::worker</definition>
+        <argsstring></argsstring>
+        <name>worker</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.worker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="41" column="1" bodyfile="face_matcher_app_class.py" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a1bf819aeb7e5fe59a928e2b133d6a10f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::close</definition>
+        <argsstring></argsstring>
+        <name>close</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.close</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="53" column="1" bodyfile="face_matcher_app_class.py" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a637f631c6555d3d3076f4150190f611c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::toggle_dark_theme</definition>
+        <argsstring></argsstring>
+        <name>toggle_dark_theme</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.toggle_dark_theme</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="61" column="1" bodyfile="face_matcher_app_class.py" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a814883811fa9cbd780652ac8da7ba609" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::image_to_search_edit</definition>
+        <argsstring></argsstring>
+        <name>image_to_search_edit</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.image_to_search_edit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="191" column="1" bodyfile="face_matcher_app_class.py" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a6eb921f8705c82cdc232df8e04eb17dc" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::browse_image_to_search</definition>
+        <argsstring></argsstring>
+        <name>browse_image_to_search</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.browse_image_to_search</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="193" column="1" bodyfile="face_matcher_app_class.py" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1ad8e5528b96ec3b593ab8b4013a279dd7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::input_folder_edit</definition>
+        <argsstring></argsstring>
+        <name>input_folder_edit</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.input_folder_edit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="201" column="1" bodyfile="face_matcher_app_class.py" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1ae8038498b522b86855fbb5f0d1c6ec2e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::browse_input_folder</definition>
+        <argsstring></argsstring>
+        <name>browse_input_folder</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.browse_input_folder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="203" column="1" bodyfile="face_matcher_app_class.py" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1aea290c15be0c4d4b0534f4462a11e212" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::output_folder_edit</definition>
+        <argsstring></argsstring>
+        <name>output_folder_edit</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.output_folder_edit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="211" column="1" bodyfile="face_matcher_app_class.py" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1ad5eed7cb7cc7776f927f0baf12a91602" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::browse_output_folder</definition>
+        <argsstring></argsstring>
+        <name>browse_output_folder</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.browse_output_folder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="213" column="1" bodyfile="face_matcher_app_class.py" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1aaf0a918e14751452e89f788f342db528" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::find_match</definition>
+        <argsstring></argsstring>
+        <name>find_match</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.find_match</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="222" column="1" bodyfile="face_matcher_app_class.py" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a41179e5d2b9a6bc8d5ab0830ada4b935" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::image_preview_label</definition>
+        <argsstring></argsstring>
+        <name>image_preview_label</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.image_preview_label</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="226" column="1" bodyfile="face_matcher_app_class.py" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a665d3bcff859a08e28ac0b963a235280" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::matched_face_label</definition>
+        <argsstring></argsstring>
+        <name>matched_face_label</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.matched_face_label</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="230" column="1" bodyfile="face_matcher_app_class.py" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1ab37f0c6383f382403ad303900a29f048" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::similarity_original_image_label</definition>
+        <argsstring></argsstring>
+        <name>similarity_original_image_label</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.similarity_original_image_label</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="234" column="1" bodyfile="face_matcher_app_class.py" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a618f83424e64464167bcc3e03b66d7e6" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::left_arrow_button</definition>
+        <argsstring></argsstring>
+        <name>left_arrow_button</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.left_arrow_button</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="238" column="1" bodyfile="face_matcher_app_class.py" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a9e00f8fe842e996f00307e093a59444c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::previous_matched_face</definition>
+        <argsstring></argsstring>
+        <name>previous_matched_face</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.previous_matched_face</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="240" column="1" bodyfile="face_matcher_app_class.py" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a7c4b1508440b09e76870d76d5d1f174d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::right_arrow_button</definition>
+        <argsstring></argsstring>
+        <name>right_arrow_button</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.right_arrow_button</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="242" column="1" bodyfile="face_matcher_app_class.py" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a68c021ec550cffd05df60cea57fbab78" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::next_matched_face</definition>
+        <argsstring></argsstring>
+        <name>next_matched_face</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.next_matched_face</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="244" column="1" bodyfile="face_matcher_app_class.py" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1aace10fbe77e800e3ce317ec18dcd7ffe" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::progress_bar</definition>
+        <argsstring></argsstring>
+        <name>progress_bar</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.progress_bar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="253" column="1" bodyfile="face_matcher_app_class.py" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1ae395a41746027ee577f9fc5f7613604e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::result_table</definition>
+        <argsstring></argsstring>
+        <name>result_table</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.result_table</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="265" column="1" bodyfile="face_matcher_app_class.py" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a58e32d68e593c1f5f93ceed8481e3349" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::on_result_table_selection_changed</definition>
+        <argsstring></argsstring>
+        <name>on_result_table_selection_changed</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.on_result_table_selection_changed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="266" column="1" bodyfile="face_matcher_app_class.py" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a701ba1b84c3313bddc0dac1f6bd2360d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::face_processing_thread</definition>
+        <argsstring></argsstring>
+        <name>face_processing_thread</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.face_processing_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="363" column="1" bodyfile="face_matcher_app_class.py" bodystart="363" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a40049e7eebd90498d6d04137e7f16106" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::on_face_processing_done</definition>
+        <argsstring></argsstring>
+        <name>on_face_processing_done</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.on_face_processing_done</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="364" column="1" bodyfile="face_matcher_app_class.py" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1a0698356dbddc5fdaaaf7f5888b6365b0" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::update_progress_bar</definition>
+        <argsstring></argsstring>
+        <name>update_progress_bar</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.update_progress_bar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="365" column="1" bodyfile="face_matcher_app_class.py" bodystart="365" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classface__matcher__app__class_1_1_face_matcher_app_1aad2f8782781c74ed00886669ccf9b327" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp::show_error_message</definition>
+        <argsstring></argsstring>
+        <name>show_error_message</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.show_error_message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="366" column="1" bodyfile="face_matcher_app_class.py" bodystart="366" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1af29f505720a6d944c177d5c240f4c69b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.__init__</definition>
+        <argsstring>(self, face_data=None)</argsstring>
+        <name>__init__</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.__init__</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classface__matcher__app__class_1_1_face_matcher_app_1a21d608052d95e4e5e42ef19c1398a875" kindref="member">face_data</ref></type>
+          <defname>face_data</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="37" column="1" bodyfile="face_matcher_app_class.py" bodystart="37" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1aa6593b4a8448b53fd53a88919bc8c915" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.create_menu_bar</definition>
+        <argsstring>(self)</argsstring>
+        <name>create_menu_bar</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.create_menu_bar</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="44" column="1" bodyfile="face_matcher_app_class.py" bodystart="44" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1af0264896d0e184994c51558aff49ae6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.get_matched_face_by_row</definition>
+        <argsstring>(self, row)</argsstring>
+        <name>get_matched_face_by_row</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.get_matched_face_by_row</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>row</type>
+          <defname>row</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="67" column="1" bodyfile="face_matcher_app_class.py" bodystart="67" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a1f423d05b299c1ae99f096f3b73c180a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.previous_matched_face</definition>
+        <argsstring>(self)</argsstring>
+        <name>previous_matched_face</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.previous_matched_face</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="81" column="1" bodyfile="face_matcher_app_class.py" bodystart="81" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a66360da3165f1951cfdd4dbaf6f23291" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.next_matched_face</definition>
+        <argsstring>(self)</argsstring>
+        <name>next_matched_face</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.next_matched_face</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="95" column="1" bodyfile="face_matcher_app_class.py" bodystart="95" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a672e99d3537b65d6bcecaa8c17777b41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.on_result_table_selection_changed</definition>
+        <argsstring>(self)</argsstring>
+        <name>on_result_table_selection_changed</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.on_result_table_selection_changed</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="110" column="1" bodyfile="face_matcher_app_class.py" bodystart="110" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a2ab49d0c6a03ee1ef80de37aa4e2a50f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.on_table_selection_changed_and_display_face</definition>
+        <argsstring>(self)</argsstring>
+        <name>on_table_selection_changed_and_display_face</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.on_table_selection_changed_and_display_face</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="140" column="1" bodyfile="face_matcher_app_class.py" bodystart="140" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a5546426b1ad8df60391020c5ce921edb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.toggle_dark_theme</definition>
+        <argsstring>(self)</argsstring>
+        <name>toggle_dark_theme</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.toggle_dark_theme</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="147" column="1" bodyfile="face_matcher_app_class.py" bodystart="147" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a0ef6c4533d72557243055e5fa1837a7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.initUI</definition>
+        <argsstring>(self)</argsstring>
+        <name>initUI</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.initUI</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="168" column="1" bodyfile="face_matcher_app_class.py" bodystart="168" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a1e0f91afde191e458bb5565e1f094198" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.browse_input_folder</definition>
+        <argsstring>(self)</argsstring>
+        <name>browse_input_folder</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.browse_input_folder</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="276" column="1" bodyfile="face_matcher_app_class.py" bodystart="276" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a4116f94b34a629eb3c6ba318e48be371" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.browse_output_folder</definition>
+        <argsstring>(self)</argsstring>
+        <name>browse_output_folder</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.browse_output_folder</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="288" column="1" bodyfile="face_matcher_app_class.py" bodystart="288" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a735385b668cb5cb30e1807e8cdfbd9d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.browse_image_to_search</definition>
+        <argsstring>(self)</argsstring>
+        <name>browse_image_to_search</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.browse_image_to_search</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="300" column="1" bodyfile="face_matcher_app_class.py" bodystart="300" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1ac12194546e0b4ff24f882b671c509f53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.load_image_thumbnail</definition>
+        <argsstring>(self, file_path)</argsstring>
+        <name>load_image_thumbnail</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.load_image_thumbnail</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>file_path</type>
+          <defname>file_path</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="313" column="1" bodyfile="face_matcher_app_class.py" bodystart="313" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a679cd4011a3f0e4ca0592e8e54788b0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.display_matched_face</definition>
+        <argsstring>(self, matched_face, similarity, original_image_name)</argsstring>
+        <name>display_matched_face</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.display_matched_face</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>matched_face</type>
+          <defname>matched_face</defname>
+        </param>
+        <param>
+          <type>similarity</type>
+          <defname>similarity</defname>
+        </param>
+        <param>
+          <type>original_image_name</type>
+          <defname>original_image_name</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="326" column="1" bodyfile="face_matcher_app_class.py" bodystart="326" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a7b6c8cd715ce76848ff3352bdc66b852" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.find_match</definition>
+        <argsstring>(self)</argsstring>
+        <name>find_match</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.find_match</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="352" column="1" bodyfile="face_matcher_app_class.py" bodystart="352" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1ae1e01d3b063fa6060bf70dcc45b1a73c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.show_error_message</definition>
+        <argsstring>(self, message)</argsstring>
+        <name>show_error_message</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.show_error_message</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>message</type>
+          <defname>message</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="374" column="1" bodyfile="face_matcher_app_class.py" bodystart="374" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a9e52db490ac54fb74652ab31d529b2c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.on_face_processing_done</definition>
+        <argsstring>(self, result)</argsstring>
+        <name>on_face_processing_done</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.on_face_processing_done</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>result</type>
+          <defname>result</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="377" column="1" bodyfile="face_matcher_app_class.py" bodystart="377" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1acc44f88c55ff5468c201f4a4af9c4903" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.display_selected_matched_face</definition>
+        <argsstring>(self)</argsstring>
+        <name>display_selected_matched_face</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.display_selected_matched_face</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="409" column="1" bodyfile="face_matcher_app_class.py" bodystart="409" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a8b8baf5469f8e42137383805c5804c7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.update_progress_bar</definition>
+        <argsstring>(self, progress)</argsstring>
+        <name>update_progress_bar</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.update_progress_bar</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>progress</type>
+          <defname>progress</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="431" column="1" bodyfile="face_matcher_app_class.py" bodystart="431" bodyend="440"/>
+      </memberdef>
+      <memberdef kind="function" id="classface__matcher__app__class_1_1_face_matcher_app_1a672e99d3537b65d6bcecaa8c17777b41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>face_matcher_app_class.FaceMatcherApp.on_result_table_selection_changed</definition>
+        <argsstring>(self)</argsstring>
+        <name>on_result_table_selection_changed</name>
+        <qualifiedname>face_matcher_app_class.FaceMatcherApp.on_result_table_selection_changed</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="face_matcher_app_class.py" line="441" column="1" bodyfile="face_matcher_app_class.py" bodystart="441" bodyend="448"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>QMainWindow</label>
+      </node>
+      <node id="1">
+        <label>face_matcher_app_class.FaceMatcherApp</label>
+        <link refid="classface__matcher__app__class_1_1_face_matcher_app"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>QMainWindow</label>
+      </node>
+      <node id="1">
+        <label>face_matcher_app_class.FaceMatcherApp</label>
+        <link refid="classface__matcher__app__class_1_1_face_matcher_app"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="face_matcher_app_class.py" line="36" column="1" bodyfile="face_matcher_app_class.py" bodystart="36" bodyend="448"/>
+    <listofallmembers>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1af29f505720a6d944c177d5c240f4c69b" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>__init__</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a6eb921f8705c82cdc232df8e04eb17dc" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>browse_image_to_search</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a735385b668cb5cb30e1807e8cdfbd9d5" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>browse_image_to_search</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1ae8038498b522b86855fbb5f0d1c6ec2e" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>browse_input_folder</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a1e0f91afde191e458bb5565e1f094198" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>browse_input_folder</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1ad5eed7cb7cc7776f927f0baf12a91602" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>browse_output_folder</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a4116f94b34a629eb3c6ba318e48be371" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>browse_output_folder</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a1bf819aeb7e5fe59a928e2b133d6a10f" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>close</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1aa6593b4a8448b53fd53a88919bc8c915" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>create_menu_bar</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a586c12f7ca335c3910aec127a3e63d01" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>dark_theme_enabled</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a679cd4011a3f0e4ca0592e8e54788b0b" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>display_matched_face</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1acc44f88c55ff5468c201f4a4af9c4903" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>display_selected_matched_face</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a21d608052d95e4e5e42ef19c1398a875" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>face_data</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a701ba1b84c3313bddc0dac1f6bd2360d" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>face_processing_thread</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1aaf0a918e14751452e89f788f342db528" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>find_match</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a7b6c8cd715ce76848ff3352bdc66b852" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>find_match</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1af0264896d0e184994c51558aff49ae6b" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>get_matched_face_by_row</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a41179e5d2b9a6bc8d5ab0830ada4b935" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>image_preview_label</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a814883811fa9cbd780652ac8da7ba609" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>image_to_search_edit</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a0ef6c4533d72557243055e5fa1837a7b" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>initUI</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1ad8e5528b96ec3b593ab8b4013a279dd7" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>input_folder_edit</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a618f83424e64464167bcc3e03b66d7e6" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>left_arrow_button</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1ac12194546e0b4ff24f882b671c509f53" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>load_image_thumbnail</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a665d3bcff859a08e28ac0b963a235280" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>matched_face_label</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a68c021ec550cffd05df60cea57fbab78" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>next_matched_face</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a66360da3165f1951cfdd4dbaf6f23291" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>next_matched_face</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a40049e7eebd90498d6d04137e7f16106" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>on_face_processing_done</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a9e52db490ac54fb74652ab31d529b2c5" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>on_face_processing_done</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a58e32d68e593c1f5f93ceed8481e3349" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>on_result_table_selection_changed</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a672e99d3537b65d6bcecaa8c17777b41" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>on_result_table_selection_changed</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a672e99d3537b65d6bcecaa8c17777b41" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>on_result_table_selection_changed</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a2ab49d0c6a03ee1ef80de37aa4e2a50f" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>on_table_selection_changed_and_display_face</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1aea290c15be0c4d4b0534f4462a11e212" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>output_folder_edit</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a9e00f8fe842e996f00307e093a59444c" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>previous_matched_face</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a1f423d05b299c1ae99f096f3b73c180a" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>previous_matched_face</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1aace10fbe77e800e3ce317ec18dcd7ffe" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>progress_bar</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1ae395a41746027ee577f9fc5f7613604e" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>result_table</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a7c4b1508440b09e76870d76d5d1f174d" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>right_arrow_button</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1aad2f8782781c74ed00886669ccf9b327" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>show_error_message</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1ae1e01d3b063fa6060bf70dcc45b1a73c" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>show_error_message</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1ab37f0c6383f382403ad303900a29f048" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>similarity_original_image_label</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a637f631c6555d3d3076f4150190f611c" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>toggle_dark_theme</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a5546426b1ad8df60391020c5ce921edb" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>toggle_dark_theme</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a0698356dbddc5fdaaaf7f5888b6365b0" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>update_progress_bar</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a8b8baf5469f8e42137383805c5804c7f" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>update_progress_bar</name></member>
+      <member refid="classface__matcher__app__class_1_1_face_matcher_app_1a868dfea8650202aff2059816f2db3d9c" prot="public" virt="non-virtual"><scope>face_matcher_app_class::FaceMatcherApp</scope><name>worker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

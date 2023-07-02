@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="class_face_processing_thread_1_1_face_processing_thread" kind="class" language="Python" prot="public">
+    <compoundname>FaceProcessingThread::FaceProcessingThread</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QThread</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_face_processing_thread_1_1_face_processing_thread_1a13b99e4919f2f7e12fd3a63e4dd53a47" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread::progress_signal</definition>
+        <argsstring></argsstring>
+        <name>progress_signal</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.progress_signal</qualifiedname>
+        <initializer>=  pyqtSignal(int)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="8" column="1" bodyfile="FaceProcessingThread.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_face_processing_thread_1_1_face_processing_thread_1a54c73f03810f15c4290cf4358f24f3bb" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread::processing_done</definition>
+        <argsstring></argsstring>
+        <name>processing_done</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.processing_done</qualifiedname>
+        <initializer>=  pyqtSignal(tuple)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="9" column="1" bodyfile="FaceProcessingThread.py" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_face_processing_thread_1_1_face_processing_thread_1a15c0832c9b93cb6a6367a89be6e975be" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread::error_signal</definition>
+        <argsstring></argsstring>
+        <name>error_signal</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.error_signal</qualifiedname>
+        <initializer>=  pyqtSignal(str)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="10" column="1" bodyfile="FaceProcessingThread.py" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_face_processing_thread_1_1_face_processing_thread_1aac60cf2d2e74a9d42d969558dd092fb3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread::input_folder</definition>
+        <argsstring></argsstring>
+        <name>input_folder</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.input_folder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="14" column="1" bodyfile="FaceProcessingThread.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_face_processing_thread_1_1_face_processing_thread_1adfa32245da73f59d60916511e7c3cd1a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread::output_folder</definition>
+        <argsstring></argsstring>
+        <name>output_folder</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.output_folder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="15" column="1" bodyfile="FaceProcessingThread.py" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_face_processing_thread_1_1_face_processing_thread_1aa70e5480c6093a5c2ecbdd47d4382f51" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread::image_to_search</definition>
+        <argsstring></argsstring>
+        <name>image_to_search</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.image_to_search</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="16" column="1" bodyfile="FaceProcessingThread.py" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_face_processing_thread_1_1_face_processing_thread_1a5ae10002267427a2ec9052625a5a6149" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread::face_data</definition>
+        <argsstring></argsstring>
+        <name>face_data</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.face_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="20" column="1" bodyfile="FaceProcessingThread.py" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_face_processing_thread_1_1_face_processing_thread_1a5039512ee64b950332db47ae9063ce34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread.__init__</definition>
+        <argsstring>(self, input_folder, output_folder, image_to_search)</argsstring>
+        <name>__init__</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.__init__</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="class_face_processing_thread_1_1_face_processing_thread_1aac60cf2d2e74a9d42d969558dd092fb3" kindref="member">input_folder</ref></type>
+          <defname>input_folder</defname>
+        </param>
+        <param>
+          <type><ref refid="class_face_processing_thread_1_1_face_processing_thread_1adfa32245da73f59d60916511e7c3cd1a" kindref="member">output_folder</ref></type>
+          <defname>output_folder</defname>
+        </param>
+        <param>
+          <type><ref refid="class_face_processing_thread_1_1_face_processing_thread_1aa70e5480c6093a5c2ecbdd47d4382f51" kindref="member">image_to_search</ref></type>
+          <defname>image_to_search</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="12" column="1" bodyfile="FaceProcessingThread.py" bodystart="12" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="class_face_processing_thread_1_1_face_processing_thread_1a65bf24d4bbd10e83dbfa433606edd490" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread.run</definition>
+        <argsstring>(self)</argsstring>
+        <name>run</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.run</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="18" column="1" bodyfile="FaceProcessingThread.py" bodystart="18" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_face_processing_thread_1_1_face_processing_thread_1a1e1d6afca38a494d6d17d3feb2ac4e28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FaceProcessingThread.FaceProcessingThread.update_progress</definition>
+        <argsstring>(self, progress)</argsstring>
+        <name>update_progress</name>
+        <qualifiedname>FaceProcessingThread.FaceProcessingThread.update_progress</qualifiedname>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>progress</type>
+          <defname>progress</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="FaceProcessingThread.py" line="34" column="1" bodyfile="FaceProcessingThread.py" bodystart="34" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>FaceProcessingThread.FaceProcessingThread</label>
+        <link refid="class_face_processing_thread_1_1_face_processing_thread"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>QThread</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>FaceProcessingThread.FaceProcessingThread</label>
+        <link refid="class_face_processing_thread_1_1_face_processing_thread"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>QThread</label>
+      </node>
+    </collaborationgraph>
+    <location file="FaceProcessingThread.py" line="7" column="1" bodyfile="FaceProcessingThread.py" bodystart="7" bodyend="38"/>
+    <listofallmembers>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1a5039512ee64b950332db47ae9063ce34" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>__init__</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1a15c0832c9b93cb6a6367a89be6e975be" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>error_signal</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1a5ae10002267427a2ec9052625a5a6149" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>face_data</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1aa70e5480c6093a5c2ecbdd47d4382f51" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>image_to_search</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1aac60cf2d2e74a9d42d969558dd092fb3" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>input_folder</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1adfa32245da73f59d60916511e7c3cd1a" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>output_folder</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1a54c73f03810f15c4290cf4358f24f3bb" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>processing_done</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1a13b99e4919f2f7e12fd3a63e4dd53a47" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>progress_signal</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1a65bf24d4bbd10e83dbfa433606edd490" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>run</name></member>
+      <member refid="class_face_processing_thread_1_1_face_processing_thread_1a1e1d6afca38a494d6d17d3feb2ac4e28" prot="public" virt="non-virtual"><scope>FaceProcessingThread::FaceProcessingThread</scope><name>update_progress</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

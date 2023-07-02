@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="gui__elements_8py" kind="file" language="Python">
+    <compoundname>gui_elements.py</compoundname>
+    <innerclass refid="classgui__elements_1_1_numeric_table_widget_item" prot="public">gui_elements::NumericTableWidgetItem</innerclass>
+    <innerclass refid="classgui__elements_1_1_match_table_widget_item" prot="public">gui_elements::MatchTableWidgetItem</innerclass>
+    <innernamespace refid="namespacegui__elements">gui_elements</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacegui__elements" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>PyQt6.QtWidgets<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>QTableWidgetItem</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="classgui__elements_1_1_numeric_table_widget_item" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classgui__elements_1_1_numeric_table_widget_item" kindref="compound">NumericTableWidgetItem</ref>(QTableWidgetItem):</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classgui__elements_1_1_numeric_table_widget_item_1ad9a35584a02f16f98d65ad5c48aa31d4" kindref="member">__init__</ref>(self,<sp/>value):</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>super().<ref refid="classgui__elements_1_1_numeric_table_widget_item_1ad9a35584a02f16f98d65ad5c48aa31d4" kindref="member">__init__</ref>(str(value))</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classgui__elements_1_1_numeric_table_widget_item_1aaa026bdaf69f6b58e4bbee918b975b1f" kindref="member">__lt__</ref>(self,<sp/>other):</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>my_number<sp/>=<sp/>float(self.text().rstrip(</highlight><highlight class="stringliteral">&apos;%&apos;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other_number<sp/>=<sp/>float(other.text().rstrip(</highlight><highlight class="stringliteral">&apos;%&apos;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>my_number<sp/>&lt;<sp/>other_number</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="12" refid="classgui__elements_1_1_match_table_widget_item" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classgui__elements_1_1_match_table_widget_item" kindref="compound">MatchTableWidgetItem</ref>(QTableWidgetItem):</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classgui__elements_1_1_match_table_widget_item_1a13e288c0a7400ba5cc30e414c84c6dde" kindref="member">__lt__</ref>(self,<sp/>other):</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>my_number<sp/>=<sp/>int(self.text().split()[-1])</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other_number<sp/>=<sp/>int(other.text().split()[-1])</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>my_number<sp/>&lt;<sp/>other_number</highlight></codeline>
+    </programlisting>
+    <location file="gui_elements.py"/>
+  </compounddef>
+</doxygen>

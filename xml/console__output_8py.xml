@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="console__output_8py" kind="file" language="Python">
+    <compoundname>console_output.py</compoundname>
+    <innerclass refid="classconsole__output_1_1_console_output_thread" prot="public">console_output::ConsoleOutputThread</innerclass>
+    <innerclass refid="classconsole__output_1_1_console_widget" prot="public">console_output::ConsoleWidget</innerclass>
+    <innernamespace refid="namespaceconsole__output">console_output</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceconsole__output" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>PyQt6.QtWidgets<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>QTextEdit,<sp/>QVBoxLayout,<sp/>QWidget</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>PyQt6.QtCore<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>QThread,<sp/>pyqtSignal</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>sys</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="classconsole__output_1_1_console_output_thread" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classconsole__output_1_1_console_output_thread" kindref="compound">ConsoleOutputThread</ref>(QThread):</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>signal<sp/>=<sp/>pyqtSignal(str)<sp/><sp/></highlight><highlight class="comment">#<sp/>signal<sp/>to<sp/>emit<sp/>text</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classconsole__output_1_1_console_output_thread_1ad9108da1c54b1637aeb3feffeaceeab8" kindref="member">write</ref>(self,<sp/>s):</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classconsole__output_1_1_console_output_thread_1a0bd8f0984fed1cd0052cfd04d56ab91a" kindref="member">signal</ref>.emit(s)<sp/><sp/></highlight><highlight class="comment">#<sp/>emit<sp/>the<sp/>signal<sp/>with<sp/>the<sp/>text</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classconsole__output_1_1_console_output_thread_1aec0261665197f536236372c5e4ceb03f" kindref="member">flush</ref>(self):</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">pass</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">#<sp/>needed<sp/>for<sp/>file-like<sp/>interface</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classconsole__output_1_1_console_widget" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classconsole__output_1_1_console_widget" kindref="compound">ConsoleWidget</ref>(QWidget):</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classconsole__output_1_1_console_widget_1a972cd245c7a6627d3220806a7933c794" kindref="member">__init__</ref>(self,<sp/>parent=None):</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>super().<ref refid="classconsole__output_1_1_console_widget_1a972cd245c7a6627d3220806a7933c794" kindref="member">__init__</ref>(parent)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Set<sp/>up<sp/>layout<sp/>and<sp/>widgets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>layout<sp/>=<sp/>QVBoxLayout()</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.setLayout(layout)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Console<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classconsole__output_1_1_console_widget_1a7cebff761a7e24c7a8947da5ff7d83fa" kindref="member">console_output</ref><sp/>=<sp/>QTextEdit()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classconsole__output_1_1_console_widget_1a7cebff761a7e24c7a8947da5ff7d83fa" kindref="member">console_output</ref>.setReadOnly(</highlight><highlight class="keyword">True</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>layout.addWidget(self.<ref refid="classconsole__output_1_1_console_widget_1a7cebff761a7e24c7a8947da5ff7d83fa" kindref="member">console_output</ref>)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>ConsoleOutputThread<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classconsole__output_1_1_console_widget_1a1e5ced40322bbd4a3d0c76e38d3495f2" kindref="member">console_output_thread</ref><sp/>=<sp/><ref refid="classconsole__output_1_1_console_output_thread" kindref="compound">ConsoleOutputThread</ref>()</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classconsole__output_1_1_console_widget_1a1e5ced40322bbd4a3d0c76e38d3495f2" kindref="member">console_output_thread</ref>.signal.connect(self.<ref refid="classconsole__output_1_1_console_widget_1a7cebff761a7e24c7a8947da5ff7d83fa" kindref="member">console_output</ref>.append)<sp/><sp/></highlight><highlight class="comment">#<sp/>connect<sp/>signal<sp/>to<sp/>append<sp/>method<sp/>of<sp/>QTextEdit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Replace<sp/>the<sp/>standard<sp/>output<sp/>with<sp/>ConsoleOutputThread<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sys.stdout<sp/>=<sp/>self.<ref refid="classconsole__output_1_1_console_widget_1a1e5ced40322bbd4a3d0c76e38d3495f2" kindref="member">console_output_thread</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classconsole__output_1_1_console_widget_1aeec288db6971951973cfdc52c4ec432e" kindref="member">start_console_output_thread</ref>(self):</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classconsole__output_1_1_console_widget_1a1e5ced40322bbd4a3d0c76e38d3495f2" kindref="member">console_output_thread</ref>.start()</highlight></codeline>
+    </programlisting>
+    <location file="console_output.py"/>
+  </compounddef>
+</doxygen>

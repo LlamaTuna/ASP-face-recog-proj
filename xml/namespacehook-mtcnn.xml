@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="namespacehook-mtcnn" kind="namespace" language="Python">
+    <compoundname>hook-mtcnn</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacehook-mtcnn_1a09747ca703577efe0f94b84f04ef9d0d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>hook-mtcnn.datas</definition>
+        <argsstring></argsstring>
+        <name>datas</name>
+        <qualifiedname>hook-mtcnn.datas</qualifiedname>
+        <initializer>=  collect_data_files(&apos;mtcnn&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hook-mtcnn.py" line="3" column="1" bodyfile="hook-mtcnn.py" bodystart="3" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hook-mtcnn.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>
