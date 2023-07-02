@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="namespacemain" kind="namespace" language="Python">
+    <compoundname>main</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacemain_1a51044c5aa847bc5829d7f04f17ee0872" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>main.app_path</definition>
+        <argsstring></argsstring>
+        <name>app_path</name>
+        <qualifiedname>main.app_path</qualifiedname>
+        <initializer>=  getattr(sys, &apos;_MEIPASS&apos;, os.path.dirname(os.path.abspath(__file__)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="main.py" line="7" column="1" bodyfile="main.py" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacemain_1a881851f3c22cc7e17189d5f891135c92" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>main.pyqt6_path</definition>
+        <argsstring></argsstring>
+        <name>pyqt6_path</name>
+        <qualifiedname>main.pyqt6_path</qualifiedname>
+        <initializer>=  os.path.join(<ref refid="namespacemain_1a51044c5aa847bc5829d7f04f17ee0872" kindref="member">app_path</ref>, &apos;PyQt6&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="main.py" line="8" column="1" bodyfile="main.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacemain_1ab394251c465cd4c9b8273b5c2679cf5a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>main.library_path</definition>
+        <argsstring></argsstring>
+        <name>library_path</name>
+        <qualifiedname>main.library_path</qualifiedname>
+        <initializer>=  os.path.join(<ref refid="namespacemain_1a51044c5aa847bc5829d7f04f17ee0872" kindref="member">app_path</ref>, &apos;face_recognition&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="main.py" line="13" column="1" bodyfile="main.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacemain_1a027c5c979712a4ef2b492a69f58d8b17" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>main.dark_theme_path</definition>
+        <argsstring></argsstring>
+        <name>dark_theme_path</name>
+        <qualifiedname>main.dark_theme_path</qualifiedname>
+        <initializer>=  os.path.join(<ref refid="namespacemain_1a51044c5aa847bc5829d7f04f17ee0872" kindref="member">app_path</ref>, &quot;styles&quot;, &quot;dark_theme.qss&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="main.py" line="19" column="1" bodyfile="main.py" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacemain_1a5fa94f0581009434c7a63791944d6ff4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>main.app</definition>
+        <argsstring></argsstring>
+        <name>app</name>
+        <qualifiedname>main.app</qualifiedname>
+        <initializer>=  QApplication(sys.argv)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="main.py" line="22" column="1" bodyfile="main.py" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacemain_1ae838b0fdced975b56fa516f0cc186548" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>main.face_matcher_app</definition>
+        <argsstring></argsstring>
+        <name>face_matcher_app</name>
+        <qualifiedname>main.face_matcher_app</qualifiedname>
+        <initializer>=  <ref refid="classface__matcher__app__class_1_1_face_matcher_app" kindref="compound">FaceMatcherApp</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="main.py" line="23" column="1" bodyfile="main.py" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="main.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

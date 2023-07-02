@@ -1,0 +1,118 @@
+\doxysection{face\+\_\+detection Namespace Reference}
+\hypertarget{namespaceface__detection}{}\label{namespaceface__detection}\index{face\_detection@{face\_detection}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a85abcfd5c6ba441f124adea60769ad7c}{get\+\_\+image\+\_\+exif\+\_\+data}} (image\+\_\+path)
+\item 
+\mbox{\hyperlink{namespaceface__detection_a48a449463b19c72fdd388de1fc17820c}{resize\+\_\+image\+\_\+with\+\_\+aspect\+\_\+ratio}} (img, size)
+\item 
+\mbox{\hyperlink{namespaceface__detection_a372ee39ad03355ff6f1f3afd7bf68d11}{convert\+\_\+image\+\_\+to\+\_\+vector}} (img)
+\item 
+\mbox{\hyperlink{namespaceface__detection_a85ad83332b14063df9166560afe4ceb3}{save\+\_\+faces\+\_\+from\+\_\+folder}} (folder\+\_\+path, \mbox{\hyperlink{namespaceface__detection_a4b31a07c379b2bdaaffe760451d4a766}{face\+\_\+detector}}, \mbox{\hyperlink{namespaceface__detection_ad74ed4d139862a3d5aa2af04b5477d35}{output\+\_\+folder}}, progress\+\_\+callback=None)
+\item 
+\mbox{\hyperlink{namespaceface__detection_ae6add67aed2f1f4ecd1fdc60b0fe6f0b}{find\+\_\+matching\+\_\+face}} (image\+\_\+path, face\+\_\+data, \mbox{\hyperlink{namespaceface__detection_a4b31a07c379b2bdaaffe760451d4a766}{face\+\_\+detector}}, threshold=0.\+5)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a0c237df4c13530e87b7893b88d0c404a}{filename}}
+\item 
+\mbox{\hyperlink{namespaceface__detection_ae8d8fe465dd8930a53ecdeb082298b20}{filemode}}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a69bd8ebcb5415bffd6f32e85eb8ee11a}{level}}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a04c4ca4480c1838401c0936d33096ecf}{format}}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a4fe6ffed259009b5df3ffae81fcd08c1}{logger}} = logging.\+get\+Logger()
+\item 
+str \mbox{\hyperlink{namespaceface__detection_ad74ed4d139862a3d5aa2af04b5477d35}{output\+\_\+folder}} = \"{}./output/\"{}
+\item 
+\mbox{\hyperlink{namespaceface__detection_a4b31a07c379b2bdaaffe760451d4a766}{face\+\_\+detector}} = MTCNN()
+\item 
+\mbox{\hyperlink{namespaceface__detection_ada631b953bf3565f903d8b994c2f2931}{resnet\+\_\+model}} = Res\+Net152(weights=\textquotesingle{}imagenet\textquotesingle{}, include\+\_\+top=False)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceface__detection_a372ee39ad03355ff6f1f3afd7bf68d11}\label{namespaceface__detection_a372ee39ad03355ff6f1f3afd7bf68d11} 
+\index{face\_detection@{face\_detection}!convert\_image\_to\_vector@{convert\_image\_to\_vector}}
+\index{convert\_image\_to\_vector@{convert\_image\_to\_vector}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{convert\_image\_to\_vector()}{convert\_image\_to\_vector()}}
+{\footnotesize\ttfamily face\+\_\+detection.\+convert\+\_\+image\+\_\+to\+\_\+vector (\begin{DoxyParamCaption}\item[{}]{img }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceface__detection_ae6add67aed2f1f4ecd1fdc60b0fe6f0b}\label{namespaceface__detection_ae6add67aed2f1f4ecd1fdc60b0fe6f0b} 
+\index{face\_detection@{face\_detection}!find\_matching\_face@{find\_matching\_face}}
+\index{find\_matching\_face@{find\_matching\_face}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{find\_matching\_face()}{find\_matching\_face()}}
+{\footnotesize\ttfamily face\+\_\+detection.\+find\+\_\+matching\+\_\+face (\begin{DoxyParamCaption}\item[{}]{image\+\_\+path,  }\item[{}]{face\+\_\+data,  }\item[{}]{face\+\_\+detector,  }\item[{}]{threshold = {\ttfamily 0.5} }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceface__detection_a85abcfd5c6ba441f124adea60769ad7c}\label{namespaceface__detection_a85abcfd5c6ba441f124adea60769ad7c} 
+\index{face\_detection@{face\_detection}!get\_image\_exif\_data@{get\_image\_exif\_data}}
+\index{get\_image\_exif\_data@{get\_image\_exif\_data}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{get\_image\_exif\_data()}{get\_image\_exif\_data()}}
+{\footnotesize\ttfamily face\+\_\+detection.\+get\+\_\+image\+\_\+exif\+\_\+data (\begin{DoxyParamCaption}\item[{}]{image\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceface__detection_a48a449463b19c72fdd388de1fc17820c}\label{namespaceface__detection_a48a449463b19c72fdd388de1fc17820c} 
+\index{face\_detection@{face\_detection}!resize\_image\_with\_aspect\_ratio@{resize\_image\_with\_aspect\_ratio}}
+\index{resize\_image\_with\_aspect\_ratio@{resize\_image\_with\_aspect\_ratio}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{resize\_image\_with\_aspect\_ratio()}{resize\_image\_with\_aspect\_ratio()}}
+{\footnotesize\ttfamily face\+\_\+detection.\+resize\+\_\+image\+\_\+with\+\_\+aspect\+\_\+ratio (\begin{DoxyParamCaption}\item[{}]{img,  }\item[{}]{size }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceface__detection_a85ad83332b14063df9166560afe4ceb3}\label{namespaceface__detection_a85ad83332b14063df9166560afe4ceb3} 
+\index{face\_detection@{face\_detection}!save\_faces\_from\_folder@{save\_faces\_from\_folder}}
+\index{save\_faces\_from\_folder@{save\_faces\_from\_folder}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{save\_faces\_from\_folder()}{save\_faces\_from\_folder()}}
+{\footnotesize\ttfamily face\+\_\+detection.\+save\+\_\+faces\+\_\+from\+\_\+folder (\begin{DoxyParamCaption}\item[{}]{folder\+\_\+path,  }\item[{}]{face\+\_\+detector,  }\item[{}]{output\+\_\+folder,  }\item[{}]{progress\+\_\+callback = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceface__detection_a4b31a07c379b2bdaaffe760451d4a766}\label{namespaceface__detection_a4b31a07c379b2bdaaffe760451d4a766} 
+\index{face\_detection@{face\_detection}!face\_detector@{face\_detector}}
+\index{face\_detector@{face\_detector}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{face\_detector}{face\_detector}}
+{\footnotesize\ttfamily face\+\_\+detection.\+face\+\_\+detector = MTCNN()}
+
+\Hypertarget{namespaceface__detection_ae8d8fe465dd8930a53ecdeb082298b20}\label{namespaceface__detection_ae8d8fe465dd8930a53ecdeb082298b20} 
+\index{face\_detection@{face\_detection}!filemode@{filemode}}
+\index{filemode@{filemode}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{filemode}{filemode}}
+{\footnotesize\ttfamily face\+\_\+detection.\+filemode}
+
+\Hypertarget{namespaceface__detection_a0c237df4c13530e87b7893b88d0c404a}\label{namespaceface__detection_a0c237df4c13530e87b7893b88d0c404a} 
+\index{face\_detection@{face\_detection}!filename@{filename}}
+\index{filename@{filename}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily face\+\_\+detection.\+filename}
+
+\Hypertarget{namespaceface__detection_a04c4ca4480c1838401c0936d33096ecf}\label{namespaceface__detection_a04c4ca4480c1838401c0936d33096ecf} 
+\index{face\_detection@{face\_detection}!format@{format}}
+\index{format@{format}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{format}{format}}
+{\footnotesize\ttfamily face\+\_\+detection.\+format}
+
+\Hypertarget{namespaceface__detection_a69bd8ebcb5415bffd6f32e85eb8ee11a}\label{namespaceface__detection_a69bd8ebcb5415bffd6f32e85eb8ee11a} 
+\index{face\_detection@{face\_detection}!level@{level}}
+\index{level@{level}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily face\+\_\+detection.\+level}
+
+\Hypertarget{namespaceface__detection_a4fe6ffed259009b5df3ffae81fcd08c1}\label{namespaceface__detection_a4fe6ffed259009b5df3ffae81fcd08c1} 
+\index{face\_detection@{face\_detection}!logger@{logger}}
+\index{logger@{logger}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily face\+\_\+detection.\+logger = logging.\+get\+Logger()}
+
+\Hypertarget{namespaceface__detection_ad74ed4d139862a3d5aa2af04b5477d35}\label{namespaceface__detection_ad74ed4d139862a3d5aa2af04b5477d35} 
+\index{face\_detection@{face\_detection}!output\_folder@{output\_folder}}
+\index{output\_folder@{output\_folder}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{output\_folder}{output\_folder}}
+{\footnotesize\ttfamily str face\+\_\+detection.\+output\+\_\+folder = \"{}./output/\"{}}
+
+\Hypertarget{namespaceface__detection_ada631b953bf3565f903d8b994c2f2931}\label{namespaceface__detection_ada631b953bf3565f903d8b994c2f2931} 
+\index{face\_detection@{face\_detection}!resnet\_model@{resnet\_model}}
+\index{resnet\_model@{resnet\_model}!face\_detection@{face\_detection}}
+\doxysubsubsection{\texorpdfstring{resnet\_model}{resnet\_model}}
+{\footnotesize\ttfamily face\+\_\+detection.\+resnet\+\_\+model = Res\+Net152(weights=\textquotesingle{}imagenet\textquotesingle{}, include\+\_\+top=False)}
+
