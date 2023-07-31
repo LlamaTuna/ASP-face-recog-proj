@@ -31,22 +31,37 @@ resnet_model = ResNet152(weights='imagenet', include_top=False)
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
+def convert_to_decimal(coord, direction):
+    degrees, minutes, seconds = coord
+    decimal = degrees + minutes / 60 + seconds / 3600
+    if direction in ['S', 'W']:
+        decimal *= -1
+    return float(decimal)
+
 def get_image_exif_data(image_path):
     try:
         img_obj = Image.open(image_path)
         exif_data = img_obj._getexif()
         if exif_data is not None:
-            desired_fields = ["Make", "Model", "DateTimeDigitized"]
-            return {
+            desired_fields = ["Make", "Model", "DateTimeDigitized", "GPSInfo"]
+            exif_info = {
                 PIL.ExifTags.TAGS[k]: v
                 for k, v in exif_data.items()
                 if k in PIL.ExifTags.TAGS and PIL.ExifTags.TAGS[k] in desired_fields
             }
+            if 'GPSInfo' in exif_info:
+                gps_info = exif_info['GPSInfo']
+                lat = convert_to_decimal(gps_info[2], gps_info[1])
+                lon = convert_to_decimal(gps_info[4], gps_info[3])
+                exif_info['GPSInfo'] = {'Latitude': lat, 'Longitude': lon}
+            print(f"EXIF data for {image_path}: {exif_info}")
+            return exif_info
         else:
             return {}
     except Exception as e:
         logger.exception(f'Error while reading EXIF data from {image_path}')
         return {}
+
 
 
 def resize_image_with_aspect_ratio(img, size):
