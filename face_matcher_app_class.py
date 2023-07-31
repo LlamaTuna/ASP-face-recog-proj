@@ -429,7 +429,7 @@ class FaceMatcherApp(QMainWindow):
 
 
     def update_progress_bar(self, progress):
-        print(f"update_progress_bar called with: {progress}")
+        print(f"update_progress_bar in face_matcher_app_class called with: {progress}")
         try:
             self.progress_bar.setValue(int(progress))
         except Exception as e:

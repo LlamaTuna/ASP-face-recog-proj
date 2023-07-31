@@ -32,6 +32,6 @@ class FaceProcessingThread(QThread):
             self.error_signal.emit(error_message)  # emit error_signal
 
     def update_progress(self, progress):
-        print(f"update_progress called with: {progress}, current thread: {threading.current_thread()}")
+        print(f"update_progress called in FaceProcessingThread with: {progress}, current thread: {threading.current_thread()}")
         self.progress_signal.emit(progress)
 
