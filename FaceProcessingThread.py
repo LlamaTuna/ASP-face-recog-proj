@@ -33,5 +33,6 @@ class FaceProcessingThread(QThread):
 
     def update_progress(self, progress):
         print(f"update_progress called in FaceProcessingThread with: {progress}, current thread: {threading.current_thread()}")
-        self.progress_signal.emit(progress)
+        #self.progress_signal.emit(progress)
+        self.progress_signal.emit(int(progress)) # amended by CB - changed to type int
 
