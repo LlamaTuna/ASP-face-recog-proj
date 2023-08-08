@@ -42,6 +42,7 @@ def get_image_exif_data(image_path):
     try:
         img_obj = Image.open(image_path)
         exif_data = img_obj._getexif()
+        
         if exif_data is not None:
             desired_fields = ["Make", "Model", "DateTimeDigitized", "GPSInfo"]
             exif_info = {
@@ -49,11 +50,19 @@ def get_image_exif_data(image_path):
                 for k, v in exif_data.items()
                 if k in PIL.ExifTags.TAGS and PIL.ExifTags.TAGS[k] in desired_fields
             }
+            
+            if 'DateTimeDigitized' in exif_info:
+                date_time = exif_info.pop('DateTimeDigitized')  # Pop returns the value and removes the key
+                date, time = date_time.split()
+                exif_info['DateDigitized'] = date
+                exif_info['TimeDigitized'] = time
+
             if 'GPSInfo' in exif_info:
                 gps_info = exif_info['GPSInfo']
                 lat = convert_to_decimal(gps_info[2], gps_info[1])
                 lon = convert_to_decimal(gps_info[4], gps_info[3])
                 exif_info['GPSInfo'] = {'Latitude': lat, 'Longitude': lon}
+                
             print(f"EXIF data for {image_path}: {exif_info}")
             return exif_info
         else:
@@ -61,8 +70,6 @@ def get_image_exif_data(image_path):
     except Exception as e:
         logger.exception(f'Error while reading EXIF data from {image_path}')
         return {}
-
-
 
 def resize_image_with_aspect_ratio(img, size):
     try:
@@ -200,11 +207,7 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
             print(f"About to call progress_callback with: {progress}")
             progress_callback(progress)
 
-
     return face_data
-
-
-
 
 def find_matching_face(image_path, face_data, face_detector, threshold=0.5):
     logger.debug(f'Starting to find matching face for image at {image_path}')
@@ -238,7 +241,7 @@ def find_matching_face(image_path, face_data, face_detector, threshold=0.5):
                     similarity = distance.cosine(face_vector, stored_face)
 
                     if similarity < threshold:
-                        matching_faces.append((img_hash, stored_data["file_name"], stored_face, similarity, f"{img_hash}_{i+1}.npy"))
+                        matching_faces.append((img_hash, stored_data["file_name"], stored_face, similarity, f"{img_hash}_{i+1}.png"))
 
     except Exception as e:
         traceback.print_exc()
