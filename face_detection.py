@@ -59,8 +59,8 @@ def get_image_exif_data(image_path):
 
             if 'GPSInfo' in exif_info:
                 gps_info = exif_info['GPSInfo']
-                lat = convert_to_decimal(gps_info[2], gps_info[1])
-                lon = convert_to_decimal(gps_info[4], gps_info[3])
+                lat = round(convert_to_decimal(gps_info[2], gps_info[1]),6)
+                lon = round(convert_to_decimal(gps_info[4], gps_info[3]),6)
                 exif_info['GPSInfo'] = {'Latitude': lat, 'Longitude': lon}
                 
             print(f"EXIF data for {image_path}: {exif_info}")
