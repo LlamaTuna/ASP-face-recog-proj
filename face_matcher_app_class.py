@@ -142,11 +142,20 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while handling the selection change in the result table and displaying the face")
             raise e
 
+    # function amended for #GUI themes CB
     def toggle_dark_theme(self):
         try:
             if self.dark_theme_enabled:
                 self.dark_theme_enabled = False
-                self.setStyleSheet("")
+                if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+                    # Running in a PyInstaller bundle
+                    bundle_dir = sys._MEIPASS
+                else:
+                    # Running in a normal Python environment
+                    bundle_dir = os.path.dirname(os.path.abspath(__file__))
+
+                light_theme_path = os.path.join(bundle_dir, "styles", "light_theme.qss")
+                self.setStyleSheet(load_stylesheet(light_theme_path)) # CB removed replace
             else:
                 self.dark_theme_enabled = True
                 if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
@@ -157,7 +166,7 @@ class FaceMatcherApp(QMainWindow):
                     bundle_dir = os.path.dirname(os.path.abspath(__file__))
 
                 dark_theme_path = os.path.join(bundle_dir, "styles", "dark_theme.qss")
-                self.setStyleSheet(load_stylesheet(dark_theme_path).replace('QMainWindow', 'QWidget'))
+                self.setStyleSheet(load_stylesheet(dark_theme_path)) # CB removed replace
         except Exception as e:
             logging.exception("An error occurred while toggling the dark theme")
             raise e
@@ -334,7 +343,10 @@ class FaceMatcherApp(QMainWindow):
 
                 similarity = float(self.result_table.item(current_row, 1).text().replace('%', '')) / 100.0
 
-                self.display_matched_face(matched_face, similarity, resized_image_name)
+                # Fetch the 'Original Image Name' from the table CB
+                original_image_name = self.result_table.item(current_row, 2).text()
+
+                self.display_matched_face(matched_face, similarity, original_image_name)
                 print(f"Retrieved resized_image_name for row {current_row}: {resized_image_name}")
 
                 print("Finished displaying selected matched face")
