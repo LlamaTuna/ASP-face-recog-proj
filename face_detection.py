@@ -71,6 +71,25 @@ def get_image_exif_data(image_path):
         logger.exception(f'Error while reading EXIF data from {image_path}')
         return {}
 
+#added face alignment function to increase accuracy.
+def align_face(face_img, left_eye, right_eye):
+    # Calculate the angle between the two eyes
+    dx = right_eye[0] - left_eye[0]
+    dy = right_eye[1] - left_eye[1]
+    angle = np.degrees(np.arctan2(dy, dx))
+    
+    # Get the center of the face
+    center_y, center_x = np.round(np.array(face_img.shape[:2]) / 2).astype(int)
+    
+    # Convert numpy.int32 to native int
+    center = (int(center_x), int(center_y))
+    
+    # Rotate the face image to align the eyes horizontally
+    rot_mat = cv2.getRotationMatrix2D(center, angle, 1)
+    aligned_face = cv2.warpAffine(face_img, rot_mat, face_img.shape[:2][::-1], flags=cv2.INTER_LINEAR)
+    
+    return aligned_face
+
 def resize_image_with_aspect_ratio(img, size):
     try:
         # Get the aspect ratio
@@ -161,12 +180,12 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
         try:
             # Using MTCNN for face detection
             detected_faces = face_detector.detect_faces(img)
-            faces = [(face['box'][1], face['box'][0]+face['box'][2], face['box'][1]+face['box'][3], face['box'][0]) for face in detected_faces]
+            
         except Exception as e:
             logger.exception(f'Error detecting faces in {image_name}. Skipping...')
             continue
 
-        if len(faces) > 0:
+        if len(detected_faces) > 0:
             try:
                 img_hash = hashlib.md5(open(image_path, 'rb').read()).hexdigest()
 
@@ -178,11 +197,21 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
                 processed_images.add(img_hash)
 
                 face_data[img_hash] = {"file_name": image_name, "faces": [], "exif_data": exif_data}
-                for (top, right, bottom, left) in faces:
-                    face_img = img[top:bottom, left:right]
-                    resized_face_img = resize_image_with_aspect_ratio(face_img, (224, 224))  # or another size if you prefer
+
+                for face in detected_faces:
+                    # Extract the face from the image
+                    left, top, width, height = face['box']
+                    right, bottom = left + width, top + height
+                    face_img = img[top:bottom, left:right] 
                     
-                    # Here we convert the face image into a feature vector
+                    # Align the face
+                    keypoints = face['keypoints']
+                    aligned_face_img = align_face(face_img, keypoints['left_eye'], keypoints['right_eye'])
+
+                    # Resize the aligned face to the desired size
+                    resized_face_img = resize_image_with_aspect_ratio(aligned_face_img, (224, 224))
+                    
+                    # Convert the face image into a feature vector
                     face_vector = convert_image_to_vector(resized_face_img)
 
                     face_img_hash = hashlib.sha256(face_vector.tobytes()).hexdigest()
@@ -197,7 +226,6 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
                     face_data[img_hash]["faces"].append(face_vector)
                     image_output_path = os.path.join(output_folder, f"{img_hash}_{len(face_data[img_hash]['faces'])}.png")
                     cv2.imwrite(image_output_path, resized_face_img)
-
             except Exception as e:
                 logger.exception(f"Error occurred in save_faces_from_folder: {e}")
                 continue
@@ -225,21 +253,27 @@ def find_matching_face(image_path, face_data, face_detector, threshold=0.5):
             left, top, width, height = face['box']
             right, bottom = left + width, top + height
 
-            face_img = img[top:bottom, left:right]  # define face_img first
-            face_img = resize_image_with_aspect_ratio(face_img, (224, 224))  # then resize it
+            face_img = img[top:bottom, left:right]  # Extract the face from the image
+
+            # Align the face
+            keypoints = face['keypoints']
+            aligned_face_img = align_face(face_img, keypoints['left_eye'], keypoints['right_eye'])
+
+            # Resize the aligned face to the desired size
+            resized_face_img = resize_image_with_aspect_ratio(aligned_face_img, (224, 224))
 
             # Convert face image to vector
-            face_vector = convert_image_to_vector(face_img)
+            face_vector = convert_image_to_vector(resized_face_img)
 
             for img_hash, stored_data in face_data.items():
                 stored_faces = stored_data["faces"]
                 for i, stored_face in enumerate(stored_faces):
                     if stored_face.size == 0:  # Add this check for empty vectors
                         continue
-                    
+
                     # Compare vectors instead of images
                     similarity = distance.cosine(face_vector, stored_face)
-                    p_similarity = abs(similarity -1)
+                    p_similarity = abs(similarity - 1)
 
                     if similarity < threshold:
                         matching_faces.append((img_hash, stored_data["file_name"], stored_face, p_similarity, f"{img_hash}_{i+1}.png"))
@@ -249,5 +283,6 @@ def find_matching_face(image_path, face_data, face_detector, threshold=0.5):
         logger.exception("Error occurred in find_matching_face")
         print(traceback.format_exc())
         raise e
+
         
     return matching_faces

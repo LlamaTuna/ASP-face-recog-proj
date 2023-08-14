@@ -32,6 +32,7 @@ class FaceMatcherApp(QMainWindow):
         self.worker = None
         self.initUI = types.MethodType(initUI, self)  # This binds the initUI function as an instance method
         self.initUI()
+        self.result_table.cellDoubleClicked.connect(self.open_image_in_default_viewer)
 
     def create_menu_bar(self):
         try:
@@ -347,6 +348,20 @@ class FaceMatcherApp(QMainWindow):
         except Exception as e:
             logging.exception("An error occurred while handling the selection change in the result table")
             raise e
+
+    def open_image_in_default_viewer(self, row, column):
+        if column == 2:  # Assuming the 'Original Image File' is in column 2
+            original_image_name = self.result_table.item(row, 2).text()
+            
+            # Assuming the image is in the input folder, construct the full path
+            full_path = os.path.join(self.input_folder_edit.text(), original_image_name)
+            
+            # Open the image using the default viewer
+            if os.path.exists(full_path):
+                os.startfile(full_path)
+            else:
+                QMessageBox.critical(self, "Error", f"File not found: {full_path}")
+
 
 def load_stylesheet(file_path):
     try:
