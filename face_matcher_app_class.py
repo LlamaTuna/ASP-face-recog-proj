@@ -3,19 +3,14 @@ import cv2
 import sys
 import types
 from gui_init import initUI
-from PyQt6.QtWidgets import QMainWindow, QSplitter, QFileDialog, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QGridLayout, QMessageBox, QScrollArea, QFrame, QTableWidgetItem, QProgressBar, QTableWidget, QTextEdit
+from PyQt6.QtWidgets import QMainWindow, QFileDialog, QMessageBox, QTableWidgetItem
 from PyQt6.QtGui import QImage, QPixmap
 from PyQt6.QtCore import Qt
 from face_detection import save_faces_from_folder, find_matching_face
 from gui_elements import NumericTableWidgetItem, MatchTableWidgetItem
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QStyle
-from PyQt6.QtWidgets import QHBoxLayout
 from FaceProcessingThread import FaceProcessingThread
-from console_output import ConsoleWidget
 import logging
-import traceback
-
 
 try:
     logging.basicConfig(filename=r'.\debug.log',
@@ -28,7 +23,6 @@ except Exception as e:
     print(f"Logging setup failed: {str(e)}")
 
 logger = logging.getLogger()
-
 
 class FaceMatcherApp(QMainWindow):
     def __init__(self, face_data=None):
@@ -65,16 +59,11 @@ class FaceMatcherApp(QMainWindow):
     def get_matched_face_by_row(self, row):
         if row >= 0 and row < self.result_table.rowCount():
             resized_image_name = self.result_table.item(row, 4).text()
-
-            # assume resized_image_name is a numpy filename,
-            # change it to an image filename according to image convention
-            image_file_name = resized_image_name.replace('.npy', '.png')  # use your actual extension here
-            matched_face_path = os.path.join(self.output_folder_edit.text(), image_file_name)
+            matched_face_path = os.path.join(self.output_folder_edit.text(), resized_image_name)
             matched_face = cv2.imread(matched_face_path)
 
             return matched_face
         return None
-
 
     def previous_matched_face(self):
         try:
@@ -104,7 +93,6 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while navigating to the next matched face")
             raise e
 
-
     def on_result_table_selection_changed(self):
         try:
             current_row = self.result_table.currentRow()
@@ -133,7 +121,6 @@ class FaceMatcherApp(QMainWindow):
         except Exception as e:
             logging.exception("An error occurred while handling the selection change in the result table")
             raise e
-
 
     def on_table_selection_changed_and_display_face(self):  # renamed this method
         try:
@@ -171,7 +158,6 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while toggling the dark theme")
             raise e
 
-
     def browse_input_folder(self):
         try:
             print("Browsing input folder")
@@ -183,7 +169,6 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while browsing the input folder")
             raise e
 
-
     def browse_output_folder(self):
         try:
             print("Browsing output folder")
@@ -194,7 +179,6 @@ class FaceMatcherApp(QMainWindow):
         except Exception as e:
             logging.exception("An error occurred while browsing the output folder")
             raise e
-
 
     def browse_image_to_search(self):
         try:
@@ -208,7 +192,6 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while browsing the image to search")
             raise e
 
-
     def load_image_thumbnail(self, file_path):
         try:
             print("Loading image thumbnail")
@@ -220,7 +203,6 @@ class FaceMatcherApp(QMainWindow):
         except Exception as e:
             logging.exception("An error occurred while loading the image thumbnail")
             raise e
-
 
     def display_matched_face(self, matched_face, similarity, original_image_name):
         try:
@@ -246,7 +228,6 @@ class FaceMatcherApp(QMainWindow):
         except Exception as e:
             logging.exception("An error occurred while displaying the matched face")
             raise e
-
 
     def find_match(self):
         try:
@@ -315,8 +296,6 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while handling the face processing done event")
             raise e
 
-
-
     def display_selected_matched_face(self):
         try:
             current_row = self.result_table.currentRow()
@@ -354,9 +333,6 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while displaying the selected matched face")
             raise e
 
-
-
-
     def update_progress_bar(self, progress):
         print(f"update_progress_bar in face_matcher_app_class called with: {progress}")
         try:
@@ -365,14 +341,12 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while updating the progress bar")
             raise e
 
-
     def on_result_table_selection_changed(self):
         try:
             self.display_selected_matched_face()
         except Exception as e:
             logging.exception("An error occurred while handling the selection change in the result table")
             raise e
-
 
 def load_stylesheet(file_path):
     try:

@@ -59,8 +59,8 @@ def get_image_exif_data(image_path):
 
             if 'GPSInfo' in exif_info:
                 gps_info = exif_info['GPSInfo']
-                lat = convert_to_decimal(gps_info[2], gps_info[1])
-                lon = convert_to_decimal(gps_info[4], gps_info[3])
+                lat = round(convert_to_decimal(gps_info[2], gps_info[1]), 6)
+                lon = round(convert_to_decimal(gps_info[4], gps_info[3]), 6)
                 exif_info['GPSInfo'] = {'Latitude': lat, 'Longitude': lon}
                 
             print(f"EXIF data for {image_path}: {exif_info}")
@@ -147,7 +147,7 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
         except Exception as e:
             logger.exception("Error occurred in save_faces_from_folder")
             print(traceback.format_exc())
-            continue  # Change here: just continue instead of raising error
+            continue  #just continue instead of raising error
 
         # Only retrieve EXIF data for the original input images
         if os.path.splitext(image_name)[-1].lower() in valid_extensions:
@@ -168,7 +168,7 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
 
         if len(faces) > 0:
             try:
-                img_hash = hashlib.sha256(open(image_path, 'rb').read()).hexdigest()
+                img_hash = hashlib.md5(open(image_path, 'rb').read()).hexdigest()
 
                 # If we have processed this image, continue to the next
                 if img_hash in processed_images:
@@ -239,9 +239,10 @@ def find_matching_face(image_path, face_data, face_detector, threshold=0.5):
                     
                     # Compare vectors instead of images
                     similarity = distance.cosine(face_vector, stored_face)
+                    p_similarity = abs(similarity -1)
 
                     if similarity < threshold:
-                        matching_faces.append((img_hash, stored_data["file_name"], stored_face, similarity, f"{img_hash}_{i+1}.png"))
+                        matching_faces.append((img_hash, stored_data["file_name"], stored_face, p_similarity, f"{img_hash}_{i+1}.png"))
 
     except Exception as e:
         traceback.print_exc()
