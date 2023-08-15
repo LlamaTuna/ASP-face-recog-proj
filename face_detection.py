@@ -196,7 +196,8 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
                 # Mark this image as processed
                 processed_images.add(img_hash)
 
-                face_data[img_hash] = {"file_name": image_name, "faces": [], "exif_data": exif_data}
+                face_data[img_hash] = {"file_name": image_name, "full_path": image_path, "faces": [], "exif_data": exif_data}
+
 
                 for face in detected_faces:
                     # Extract the face from the image

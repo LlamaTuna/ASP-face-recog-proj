@@ -269,9 +269,13 @@ class FaceMatcherApp(QMainWindow):
                 self.result_table.setRowCount(len(matching_faces))
 
                 for i, (img_hash, original_image_name, face_vector, similarity, resized_image_name) in enumerate(matching_faces):
+                    face_info = self.face_data.get(img_hash, {})  # <-- This line retrieves the relevant data for the current img_hash
                     self.result_table.setItem(i, 0, MatchTableWidgetItem(f"Match {i + 1}"))
                     self.result_table.setItem(i, 1, NumericTableWidgetItem(f"{similarity * 100:.2f}%"))
-                    self.result_table.setItem(i, 2, QTableWidgetItem(original_image_name))
+                    original_image_full_path = face_info.get('full_path', '')
+                    self.result_table.setItem(i, 2, QTableWidgetItem(original_image_full_path))
+                
+
                     
                     exif_data = face_data.get(img_hash, {}).get('exif_data', {})
                     latitude = exif_data.get('GPSInfo', {}).get('Latitude', '')
@@ -351,16 +355,14 @@ class FaceMatcherApp(QMainWindow):
 
     def open_image_in_default_viewer(self, row, column):
         if column == 2:  # Assuming the 'Original Image File' is in column 2
-            original_image_name = self.result_table.item(row, 2).text()
-            
-            # Assuming the image is in the input folder, construct the full path
-            full_path = os.path.join(self.input_folder_edit.text(), original_image_name)
-            
+            original_image_full_path = self.result_table.item(row, 2).text()
+                
             # Open the image using the default viewer
-            if os.path.exists(full_path):
-                os.startfile(full_path)
+            if os.path.exists(original_image_full_path):
+                os.startfile(original_image_full_path)
             else:
-                QMessageBox.critical(self, "Error", f"File not found: {full_path}")
+                QMessageBox.critical(self, "Error", f"File not found: {original_image_full_path}")
+
 
 
 def load_stylesheet(file_path):
