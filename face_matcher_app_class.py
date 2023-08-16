@@ -11,6 +11,7 @@ from gui_elements import NumericTableWidgetItem, MatchTableWidgetItem
 from PyQt6.QtGui import QAction
 from FaceProcessingThread import FaceProcessingThread
 import logging
+import csv
 
 try:
     logging.basicConfig(filename=r'.\debug.log',
@@ -53,6 +54,16 @@ class FaceMatcherApp(QMainWindow):
             toggle_dark_theme_action = QAction('Toggle Dark Theme', self)
             toggle_dark_theme_action.triggered.connect(self.toggle_dark_theme)
             view_menu.addAction(toggle_dark_theme_action)
+
+            # Create Export to CSV action
+            export_csv_action = QAction('Export to CSV', self)
+            export_csv_action.triggered.connect(self.export_table_to_csv)
+            file_menu.addAction(export_csv_action)
+
+            # Create Export to HTML action
+            export_html_action = QAction('Export to HTML', self)
+            export_html_action.triggered.connect(self.export_table_to_html)
+            file_menu.addAction(export_html_action)
         except Exception as e:
             logging.exception("An error occurred while creating the menu bar")
             raise e
@@ -362,6 +373,46 @@ class FaceMatcherApp(QMainWindow):
                 os.startfile(original_image_full_path)
             else:
                 QMessageBox.critical(self, "Error", f"File not found: {original_image_full_path}")
+    import csv
+
+    def export_table_to_csv(self):
+        path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "CSV Files (*.csv)")
+        if not path:
+            return
+
+        with open(path, 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            # Write headers
+            headers = [self.result_table.horizontalHeaderItem(i).text() for i in range(self.result_table.columnCount())]
+            writer.writerow(headers)
+            # Write data
+            for row in range(self.result_table.rowCount()):
+                row_data = [self.result_table.item(row, col).text() for col in range(self.result_table.columnCount())]
+                writer.writerow(row_data)
+
+    def export_table_to_html(self):
+        path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "HTML Files (*.html)")
+        if not path:
+            return
+
+        html_content = "<table border='1'>\n"
+        
+        # Headers
+        html_content += "<thead>\n<tr>\n"
+        for i in range(self.result_table.columnCount()):
+            html_content += f"<th>{self.result_table.horizontalHeaderItem(i).text()}</th>\n"
+        html_content += "</tr>\n</thead>\n<tbody>\n"
+        
+        # Rows
+        for row in range(self.result_table.rowCount()):
+            html_content += "<tr>\n"
+            for col in range(self.result_table.columnCount()):
+                html_content += f"<td>{self.result_table.item(row, col).text()}</td>\n"
+            html_content += "</tr>\n"
+        html_content += "</tbody>\n</table>"
+
+        with open(path, 'w') as html_file:
+            html_file.write(html_content)
 
 
 

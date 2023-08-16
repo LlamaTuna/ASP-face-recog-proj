@@ -31,6 +31,12 @@ resnet_model = ResNet152(weights='imagenet', include_top=False)
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
+def is_valid_image_extension(file_path):
+    valid_extensions = ['.png', '.jpeg', '.jpg', '.bmp']
+    ext = os.path.splitext(file_path)[-1].lower()
+    return ext in valid_extensions
+
+
 def convert_to_decimal(coord, direction):
     degrees, minutes, seconds = coord
     decimal = degrees + minutes / 60 + seconds / 3600
@@ -157,16 +163,21 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
     num_images = len(image_paths)
 
     for idx, image_path in enumerate(image_paths, start=1):
+        # Check the image extension first
+        if not is_valid_image_extension(image_path):
+            logger.warning(f"{image_path} does not have a valid image extension. Skipping.")
+            continue
+
         image_name = os.path.basename(image_path)
         logger.debug(f'Processing image {idx} of {num_images}: {image_name}')
 
         try:
             img = cv2.imread(image_path)
-            assert img is not None, f"Image at {image_path} is None"
+            if img is None:
+                raise ValueError(f"Failed to read image from {image_path}")
         except Exception as e:
-            logger.exception("Error occurred in save_faces_from_folder")
-            print(traceback.format_exc())
-            continue  #just continue instead of raising error
+            logger.exception(f"Error reading or processing image {image_name} in save_faces_from_folder: {str(e)}")
+            continue  # Skip to the next image
 
         # Only retrieve EXIF data for the original input images
         if os.path.splitext(image_name)[-1].lower() in valid_extensions:
@@ -176,10 +187,15 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
 
         # Print the EXIF data
         logger.debug(f"EXIF data for {image_name}: {exif_data}")
-
+            
         try:
             # Using MTCNN for face detection
             detected_faces = face_detector.detect_faces(img)
+
+            # Print confidence scores
+            for face in detected_faces:
+                confidence_score = face['confidence']
+                print(f"Image: {image_name}, Face Confidence: {confidence_score}")
             
         except Exception as e:
             logger.exception(f'Error detecting faces in {image_name}. Skipping...')
@@ -200,7 +216,9 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
 
 
                 for face in detected_faces:
-                    # Extract the face from the image
+                    confidence = face['confidence']
+                    if confidence < 0.9:  # adjust this threshold as needed
+                        continue
                     left, top, width, height = face['box']
                     right, bottom = left + width, top + height
                     face_img = img[top:bottom, left:right] 
@@ -238,7 +256,7 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
 
     return face_data
 
-def find_matching_face(image_path, face_data, face_detector, threshold=0.5):
+def find_matching_face(image_path, face_data, face_detector, threshold=.55):
     logger.debug(f'Starting to find matching face for image at {image_path}')
     matching_faces = []
     try:
@@ -246,10 +264,12 @@ def find_matching_face(image_path, face_data, face_detector, threshold=0.5):
         if img is None:
             raise ValueError(f"Unable to read image from {image_path}")
 
-        # Now using MTCNN for face detection
+        # Using MTCNN for face detection
         detected_faces = face_detector.detect_faces(img)
-
         for face in detected_faces:
+            confidence = face['confidence']
+            if confidence < 0.9:  # adjust this threshold as needed
+                continue
             # Get face box
             left, top, width, height = face['box']
             right, bottom = left + width, top + height
@@ -284,6 +304,5 @@ def find_matching_face(image_path, face_data, face_detector, threshold=0.5):
         logger.exception("Error occurred in find_matching_face")
         print(traceback.format_exc())
         raise e
-
         
     return matching_faces
