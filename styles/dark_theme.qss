@@ -1,17 +1,128 @@
-QWidget {
-    background-color: #2D2D2D;
+QMainWindow {
+    background-color: qlineargradient(x1:0, y1:0.5, x2:0, y2:1, stop:0 #250902, stop:1 #38040e);
+    color: #FFFFFF;
+    min-height: 650px;
+    border: 3px solid #ad2831;
+}
+
+QSplitter::handle {
+    background: 3px #ad2831;
+    border-radius: 2px;
+}
+
+QLabel {
+    background-color: 'transparent';
     color: #FFFFFF;
 }
-QLineEdit, QTableWidget, QHeaderView::section {
-    background-color: #353535;
+
+QScrollBar {
+    background-color: #434343;
+}
+
+QMenuBar {
+    background-color: #ad2831;
+    color: #FFFFFF;
+    font: bold 14px;
+}
+
+QMenuBar::item:selected {
+    background: #800e13;
+}
+
+QMenuBar::item:pressed {
+    background: #800e13;
+}
+
+QTableWidget {
+    background-color: #030303;
     color: #FFFFFF;
     border: 1px solid #5A5A5A;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 8px;
 }
+
+QHeaderView::section {
+    background-color: #640d14;
+    color: #FFFFFF;
+    border: 1px solid #5A5A5A;
+    font: bold 12px;
+
+}
+
+QLineEdit{
+    background-color: #030303;
+    color: #FFFFFF;
+    border: 1px solid #5A5A5A;
+    border-radius: 5px;
+    min-width: 4em;
+    padding: 2px;
+}
+
+QTextEdit {
+    background-color: #030303;
+    color: #FFFFFF;
+    border: 1px solid #5A5A5A;
+    border-radius: 5px;
+}
+
 QPushButton {
-    background-color: #353535;
-    color: #FFFFFF;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #e09f3e, stop:1 #ad2831);
+    border-color: #ad2831;
+    color: white;
+    border-style: inset;
+    border-width: 1px;
+    border-radius: 10px;
+    font: bold 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    icon-size: 1em;
+}
+
+QPushButton#left_arrow_button {
+max-width: 40px;
+}
+
+QPushButton#right_arrow_button {
+max-width: 40px;
+}
+
+QPushButton::hover {
+background-color: #ad2831;
+border-color: #ad2831;
+border-style: outset;
+}
+
+QPushButton::pressed {
+    background-color: #640d14;
+    border-style: inset;
+}
+
+QLabel#image_preview_label {
+    background-color: #030303;
+    qproperty-alignment: AlignCenter;
     border: 1px solid #5A5A5A;
+    border-radius: 5px;
+    min-height: 112px;
 }
-QPushButton:hover {
-    background-color: #5A5A5A;
+
+QLabel#matched_face_label {
+    background-color: #030303;
+    qproperty-alignment: AlignCenter;
+    border: 1px solid #5A5A5A;
+    border-radius: 5px;
+    min-height: 112px;
 }
+
+QLabel#similarity_original_image_label {
+    qproperty-alignment: AlignCenter;
+    color: #FFFFFF;
+}
+
+QProgressBar {
+    text-align: center;
+    border: 1px solid #5A5A5A;
+    background-color: #030303
+}
+
+
