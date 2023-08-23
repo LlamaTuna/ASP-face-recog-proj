@@ -1,4 +1,5 @@
 import os
+from platform import win32_ver
 import cv2
 import sys
 import types
@@ -64,9 +65,31 @@ class FaceMatcherApp(QMainWindow):
             export_html_action = QAction('Export to HTML', self)
             export_html_action.triggered.connect(self.export_table_to_html)
             file_menu.addAction(export_html_action)
+
+            # Create help menu item
+            help_menu = menubar.addMenu('Help')
+            help_action = QAction('Help', self)
+            help_action.triggered.connect(self.help_dialogue)
+            help_menu.addAction(help_action)
+            
+
         except Exception as e:
             logging.exception("An error occurred while creating the menu bar")
             raise e
+
+    def help_dialogue(self):
+        help_message = ("Welcome to Face Finder.\n\n"
+        "1. Select an image of a face you wish to search for.\n"
+        "2. Select a directory containing images you wish to analyse.\n"
+        "3. Select an ouput directory to place any images of matching faces found.\n"
+        "4. Press find match and face finder will commence its analysis.\n\n"
+        "All images in the selected directory and any sub-directories will be analysed.\n\n"
+        "Any images with matching faces will be shown in the results table along with any available location and timestamp data.\n\n"
+        "In the results table, double click on the original image file to view the image")
+        help_text = QMessageBox(self)
+        help_text.setWindowTitle('Help')
+        help_text.setText(help_message)
+        help_text.exec()
 
     def get_matched_face_by_row(self, row):
         if row >= 0 and row < self.result_table.rowCount():

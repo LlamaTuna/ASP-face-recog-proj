@@ -1,3 +1,4 @@
+/* light themed styling for face finder application */
 QMainWindow {
     background-color: qlineargradient(x1:0, y1:0.5, x2:0, y2:1, stop:0 #dfeaeb, stop:1 #288cbc);
     color: #000000;
@@ -5,6 +6,7 @@ QMainWindow {
     border: 3px solid #14386a;
 }
 
+/* styling for vertical screen splitter handle */
 QSplitter::handle {
     background: 3px #14386a;
     border-radius: 2px;
@@ -14,10 +16,12 @@ QLabel {
     background-color: 'transparent';
 }
 
+/* styling for scrollbars */
 QScrollBar {
     background-color: #d3d3d3;
 }
 
+/* styling for menu */
 QMenuBar {
     background-color: #14386a;
     color: #FFFFFF;
@@ -32,6 +36,7 @@ QMenuBar::item:pressed {
     background: #024fa7;
 }
 
+/* styling for results table */
 QTableWidget {
     background-color: #f3f3f3;
     color: #000000;
@@ -41,6 +46,12 @@ QTableWidget {
     margin: 8px;
 }
 
+QTableView::item:selected {
+    background-color: black;
+    color: white;
+}
+
+/* styling for column and row titles in results table */
 QHeaderView::section {
     background-color: #415989;
     color: #FFFFFF;
@@ -49,6 +60,7 @@ QHeaderView::section {
 
 }
 
+/* styling for file path boxes */
 QLineEdit{
     background-color: #f3f3f3;
     color: #000000;
@@ -58,12 +70,14 @@ QLineEdit{
     padding: 2px;
 }
 
+/* styling for console log box */
 QTextEdit {
     background-color: #f3f3f3;
     border: 1px solid #5A5A5A;
     border-radius: 5px;
 }
 
+/* styling for buttons */
 QPushButton {
     background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #024fa7, stop:1 #415989);
     border-color: #14386a;
@@ -96,6 +110,7 @@ QPushButton::pressed {
     border-style: inset;
 }
 
+/* styling for preview image box */
 QLabel#image_preview_label {
     background-color: #f3f3f3;
     qproperty-alignment: AlignCenter;
@@ -104,6 +119,7 @@ QLabel#image_preview_label {
     min-height: 112px;
 }
 
+/* styling for matched face image box */
 QLabel#matched_face_label {
     background-color: #f3f3f3;
     qproperty-alignment: AlignCenter;
@@ -112,10 +128,12 @@ QLabel#matched_face_label {
     min-height: 112px;
 }
 
+/* styling for text under preview image box */
 QLabel#similarity_original_image_label {
     qproperty-alignment: AlignCenter;
 }
 
+/* styling for progress bar */
 QProgressBar {
     text-align: center;
     border: 1px solid #14386a;
