@@ -148,7 +148,7 @@ def convert_image_to_vector(img):
 
 
 
-def save_faces_from_folder(folder_path, face_detector, output_folder, progress_callback=None):
+def save_faces_from_folder(folder_path, output_folder, face_detector, progress_callback=None, cancel_flag=None, partial_update_callback=None):
     face_data = {}
     valid_extensions = ['.png', '.jpeg', '.jpg', '.bmp']
     processed_images = set()  # Keep track of processed images
@@ -163,7 +163,10 @@ def save_faces_from_folder(folder_path, face_detector, output_folder, progress_c
     num_images = len(image_paths)
 
     for idx, image_path in enumerate(image_paths, start=1):
-        # Check the image extension first
+        img_hash = None 
+        # Check if processing should be cancelled
+        if cancel_flag and cancel_flag():
+            break
         if not is_valid_image_extension(image_path):
             logger.warning(f"{image_path} does not have a valid image extension. Skipping.")
             continue
