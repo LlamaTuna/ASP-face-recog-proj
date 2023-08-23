@@ -70,17 +70,22 @@ def initUI(self):
         output_folder_layout.addWidget(output_folder_button)
         left_panel_layout.addLayout(output_folder_layout)
 
-
         # Find match button
         find_match_button = QPushButton('Find match')
         find_match_button.clicked.connect(self.find_match)
         left_panel_layout.addWidget(find_match_button)
 
+        #Cancel processing button
+        self.cancel_button = QPushButton("Cancel")
+        self.cancel_button.clicked.connect(self.cancel_face_processing)
+        left_panel_layout.addWidget(find_match_button)
+        left_panel_layout.addWidget(self.cancel_button) 
+
         # Image preview
         self.image_preview_label = QLabel()
         self.image_preview_label.setObjectName('image_preview_label')
         left_panel_layout.addWidget(self.image_preview_label)
-
+    
         # Progress bar
         left_panel_layout.addWidget(QLabel('Progress:'))
         self.progress_bar = QProgressBar()

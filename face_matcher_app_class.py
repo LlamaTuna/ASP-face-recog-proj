@@ -288,12 +288,23 @@ class FaceMatcherApp(QMainWindow):
 
     def show_error_message(self, message):
         QMessageBox.critical(self, "Error", message)
-        
+        self.cancel_button.setEnabled(False)  # Disable the Cancel button here too
+
+
+    def cancel_face_processing(self):
+        if hasattr(self, 'face_processing_thread') and self.face_processing_thread.isRunning():
+            self.face_processing_thread.cancel_processing()
+            QMessageBox.information(self, "Info", "Face processing has been cancelled.")
+
+        self.cancel_button.setEnabled(False)  # To disable
+        self.cancel_button.setEnabled(True)   # To enable
+    
     def on_face_processing_done(self, result):
         try:
             matching_faces, face_data = result
             self.face_data = face_data
             logging.debug("Processing finished")
+            self.cancel_button.setEnabled(False)  # Disable the Cancel button here
             
             if len(matching_faces) > 0:
                 # Setup the table columns
