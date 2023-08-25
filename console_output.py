@@ -33,3 +33,6 @@ class ConsoleWidget(QWidget):
 
     def start_console_output_thread(self):
         self.console_output_thread.start()
+
+    def clear_console(self):
+        self.text_edit.clear()

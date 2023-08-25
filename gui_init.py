@@ -1,9 +1,10 @@
 from PyQt6.QtWidgets import  QSplitter, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QProgressBar, QTableWidget
 from PyQt6.QtCore import Qt
-from face_detection import save_faces_from_folder, find_matching_face
 from PyQt6.QtWidgets import QStyle
 from PyQt6.QtWidgets import QHBoxLayout
 from console_output import ConsoleWidget
+from PyQt6.QtWidgets import QDoubleSpinBox
+
 import logging
 import os
 import sys
@@ -81,6 +82,28 @@ def initUI(self):
         left_panel_layout.addWidget(find_match_button)
         left_panel_layout.addWidget(self.cancel_button) 
 
+        #ouput selected photos
+        # Adjust the range and default value
+        self.similarity_threshold_spinbox = QDoubleSpinBox(self)
+        self.similarity_threshold_spinbox.setRange(0, 100)  # Range from 0% to 100%
+        self.similarity_threshold_spinbox.setSingleStep(1)  # Adjust by 1%
+        self.similarity_threshold_spinbox.setValue(90)     # Default to 90%
+        self.similarity_threshold_spinbox.setFixedWidth(100)
+        self.similarity_threshold_spinbox.setSuffix('%')   # Add a '%' suffix to make it clear that it's a percentage
+        similarity_label = QLabel('Enter the minimum similarity percentage for photos to copy.')
+        left_panel_layout.addWidget(similarity_label) 
+        left_panel_layout.addWidget(self.similarity_threshold_spinbox)
+
+        self.select_output_directory_button = QPushButton("Select Output Directory", self)
+        self.select_output_directory_button.clicked.connect(self.select_output_directory)
+        left_panel_layout.addWidget(self.select_output_directory_button)
+
+        self.copy_photos_button = QPushButton("Copy Matching Photos", self)
+        self.copy_photos_button.clicked.connect(self.copy_matching_photos)
+        left_panel_layout.addWidget(self.copy_photos_button)
+
+        self.output_directory = None  # Initialize to None
+
         # Image preview
         self.image_preview_label = QLabel()
         self.image_preview_label.setObjectName('image_preview_label')
@@ -119,10 +142,28 @@ def initUI(self):
         self.similarity_original_image_label.setWordWrap(True)
         left_panel_layout.addWidget(self.similarity_original_image_label)
         
+        #Add tag buttons here.
+
+        # 1. Output Directory Selection Button
+        output_directory_layout = QHBoxLayout()
+        self.output_directory_edit = QLineEdit()
+        output_directory_button = QPushButton('Select Output Directory')
+        output_directory_button.clicked.connect(self.browse_output_directory)
+        output_directory_layout.addWidget(QLabel('Output Directory:'))
+        output_directory_layout.addWidget(self.output_directory_edit)
+        output_directory_layout.addWidget(output_directory_button)
+        left_panel_layout.addLayout(output_directory_layout)
+
+        # 2. Export Tags Button
+        export_tags_button = QPushButton('Export Tags')
+        export_tags_button.clicked.connect(self.export_tagged_photos)
+        left_panel_layout.addWidget(export_tags_button)
+
+
         # Console output
-        console_widget = ConsoleWidget()
-        right_panel_layout.addWidget(console_widget)
-        console_widget.start_console_output_thread()
+        self.console_widget = ConsoleWidget()
+        right_panel_layout.addWidget(self.console_widget)
+        self.console_widget.start_console_output_thread()
 
         # Add top_splitter to main_layout
         main_layout.addWidget(top_splitter)

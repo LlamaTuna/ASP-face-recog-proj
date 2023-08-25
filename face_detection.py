@@ -146,8 +146,6 @@ def convert_image_to_vector(img):
         print(traceback.format_exc())
         raise e
 
-
-
 def save_faces_from_folder(folder_path, output_folder, face_detector, progress_callback=None, cancel_flag=None, partial_update_callback=None):
     face_data = {}
     valid_extensions = ['.png', '.jpeg', '.jpg', '.bmp']
