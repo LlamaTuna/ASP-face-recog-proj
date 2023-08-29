@@ -85,11 +85,14 @@ class FaceMatcherApp(QMainWindow):
         help_message = ("Welcome to Face Finder.\n\n"
         "1. Select an image of a face you wish to search for.\n"
         "2. Select a directory containing images you wish to analyse.\n"
-        "3. Select an ouput directory to place any images of matching faces found.\n"
+        "3. Select an ouput directory to place any images of faces found.\n"
         "4. Press find match and face finder will commence its analysis.\n\n"
         "All images in the selected directory and any sub-directories will be analysed.\n\n"
-        "Any images with matching faces will be shown in the results table along with any available location and timestamp data.\n\n"
-        "In the results table, double click on the original image file to view the image")
+        "Faces in which the algorithms compute to be similar enough will be placed in the output directory and entered in the results table along with any available location and timestamp data.\n\n"
+        "Once the analysis is complete you can choose to:\n\n"
+        "1. Double click on the original image file in the results table to view the original image.\n"
+        "2. In the right hand column you can opt to export original images to a selected directory based upon similarity score.\n"
+        "3. Alternatively you can opt to export original images to a selected directory by tagging them in the results table.")
         help_text = QMessageBox(self)
         help_text.setWindowTitle('Help')
         help_text.setText(help_message)
