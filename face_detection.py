@@ -2,7 +2,7 @@ import logging
 import traceback
 import os
 import cv2
-import sys
+#import sys
 import hashlib
 import numpy as np
 from mtcnn import MTCNN
@@ -26,6 +26,7 @@ logger = logging.getLogger()
 output_folder = "./output/"
 face_detector = MTCNN()
 resnet_model = ResNet152(weights='imagenet', include_top=False)
+print('Models initialized successfully.')
 
 # Create output directory if it doesn't exist
 if not os.path.exists(output_folder):
@@ -144,6 +145,7 @@ def convert_image_to_vector(img):
         traceback.print_exc()
         logger.exception("Error occurred in save_faces_from_folder")
         print(traceback.format_exc())
+        print('An error occurred. Please check the logs for more details.')
         raise e
 
 def save_faces_from_folder(folder_path, output_folder, face_detector, progress_callback=None, cancel_flag=None, partial_update_callback=None):
@@ -192,12 +194,17 @@ def save_faces_from_folder(folder_path, output_folder, face_detector, progress_c
         try:
             # Using MTCNN for face detection
             detected_faces = face_detector.detect_faces(img)
+            print(f'Number of faces detected: {len(detected_faces)}')
 
             # Print confidence scores
-            for face in detected_faces:
-                confidence_score = face['confidence']
-                print(f"Image: {image_name}, Face Confidence: {confidence_score}")
             
+            if not detected_faces:
+                print('No faces detected in the image.')
+
+            for face in detected_faces:
+                        confidence_score = face['confidence']
+                        print(f"Image: {image_name}, Face Confidence: {confidence_score}")
+                    
         except Exception as e:
             logger.exception(f'Error detecting faces in {image_name}. Skipping...')
             continue
@@ -215,44 +222,46 @@ def save_faces_from_folder(folder_path, output_folder, face_detector, progress_c
 
                 face_data[img_hash] = {"file_name": image_name, "full_path": image_path, "faces": [], "exif_data": exif_data}
 
+                
+                if not detected_faces:
+                    print('No faces detected in the image.')
 
                 for face in detected_faces:
-                    confidence = face['confidence']
-                    if confidence < 0.9:  # adjust this threshold as needed
-                        continue
-                    left, top, width, height = face['box']
-                    right, bottom = left + width, top + height
-                    face_img = img[top:bottom, left:right] 
-                    
-                    # Align the face
-                    keypoints = face['keypoints']
-                    aligned_face_img = align_face(face_img, keypoints['left_eye'], keypoints['right_eye'])
+                                confidence = face['confidence']
+                                if confidence < 0.9:  # adjust this threshold as needed
+                                    continue
+                                left, top, width, height = face['box']
+                                right, bottom = left + width, top + height
+                                face_img = img[top:bottom, left:right] 
+                                
+                                # Align the face
+                                keypoints = face['keypoints']
+                                aligned_face_img = align_face(face_img, keypoints['left_eye'], keypoints['right_eye'])
 
-                    # Resize the aligned face to the desired size
-                    resized_face_img = resize_image_with_aspect_ratio(aligned_face_img, (224, 224))
-                    
-                    # Convert the face image into a feature vector
-                    face_vector = convert_image_to_vector(resized_face_img)
+                                # Resize the aligned face to the desired size
+                                resized_face_img = resize_image_with_aspect_ratio(aligned_face_img, (224, 224))
+                                
+                                # Convert the face image into a feature vector
+                                face_vector = convert_image_to_vector(resized_face_img)
 
-                    face_img_hash = hashlib.sha256(face_vector.tobytes()).hexdigest()
-                    
-                    # If we have processed this face, continue to the next
-                    if face_img_hash in processed_faces:
-                        continue
-                    
-                    # Mark this face as processed
-                    processed_faces.add(face_img_hash)
+                                face_img_hash = hashlib.sha256(face_vector.tobytes()).hexdigest()
+                                
+                                # If we have processed this face, continue to the next
+                                if face_img_hash in processed_faces:
+                                    continue
+                                
+                                # Mark this face as processed
+                                processed_faces.add(face_img_hash)
 
-                    face_data[img_hash]["faces"].append(face_vector)
-                    image_output_path = os.path.join(output_folder, f"{img_hash}_{len(face_data[img_hash]['faces'])}.png")
-                    cv2.imwrite(image_output_path, resized_face_img)
+                                face_data[img_hash]["faces"].append(face_vector)
+                                image_output_path = os.path.join(output_folder, f"{img_hash}_{len(face_data[img_hash]['faces'])}.png")
+                                cv2.imwrite(image_output_path, resized_face_img)
             except Exception as e:
                 logger.exception(f"Error occurred in save_faces_from_folder: {e}")
                 continue
 
         if progress_callback:
             progress = idx / num_images * 100
-            print(f"About to call progress_callback with: {progress}")
             progress_callback(progress)
 
     return face_data
@@ -267,43 +276,54 @@ def find_matching_face(image_path, face_data, face_detector, threshold=.55):
 
         # Using MTCNN for face detection
         detected_faces = face_detector.detect_faces(img)
+        print(f'Number of faces detected: {len(detected_faces)}')
+        
+        if not detected_faces:
+            print('No faces detected in the image.')
+
         for face in detected_faces:
-            confidence = face['confidence']
-            if confidence < 0.9:  # adjust this threshold as needed
-                continue
-            # Get face box
-            left, top, width, height = face['box']
-            right, bottom = left + width, top + height
+                confidence = face['confidence']
+                if confidence < 0.9:  # adjust this threshold as needed
+                    continue
+                # Get face box
+                left, top, width, height = face['box']
+                right, bottom = left + width, top + height
 
-            face_img = img[top:bottom, left:right]  # Extract the face from the image
+                face_img = img[top:bottom, left:right]  # Extract the face from the image
 
-            # Align the face
-            keypoints = face['keypoints']
-            aligned_face_img = align_face(face_img, keypoints['left_eye'], keypoints['right_eye'])
+                # Align the face
+                keypoints = face['keypoints']
+                aligned_face_img = align_face(face_img, keypoints['left_eye'], keypoints['right_eye'])
 
-            # Resize the aligned face to the desired size
-            resized_face_img = resize_image_with_aspect_ratio(aligned_face_img, (224, 224))
+                # Resize the aligned face to the desired size
+                resized_face_img = resize_image_with_aspect_ratio(aligned_face_img, (224, 224))
 
-            # Convert face image to vector
-            face_vector = convert_image_to_vector(resized_face_img)
+                # Convert face image to vector
+                face_vector = convert_image_to_vector(resized_face_img)
 
-            for img_hash, stored_data in face_data.items():
-                stored_faces = stored_data["faces"]
-                for i, stored_face in enumerate(stored_faces):
-                    if stored_face.size == 0:  # Add this check for empty vectors
-                        continue
+                for img_hash, stored_data in face_data.items():
+                    stored_faces = stored_data["faces"]
+                    for i, stored_face in enumerate(stored_faces):
+                        if stored_face.size == 0:  # Add this check for empty vectors
+                            continue
 
-                    # Compare vectors instead of images
-                    similarity = distance.cosine(face_vector, stored_face)
-                    p_similarity = abs(similarity - 1)
+                        # Compare vectors instead of images
+                        similarity = distance.cosine(face_vector, stored_face)
+                        p_similarity = abs(similarity - 1)
 
-                    if similarity < threshold:
-                        matching_faces.append((img_hash, stored_data["file_name"], stored_face, p_similarity, f"{img_hash}_{i+1}.png"))
+                        if similarity < threshold:
+                            matching_faces.append((img_hash, stored_data["file_name"], stored_face, p_similarity, f"{img_hash}_{i+1}.png"))
 
     except Exception as e:
         traceback.print_exc()
         logger.exception("Error occurred in find_matching_face")
         print(traceback.format_exc())
+        print('An error occurred. Please check the logs for more details.')
         raise e
         
+    print(f'Number of matches found: {len(matching_faces)}')
+    
+    if not matching_faces:
+        print('No matching faces found for the image.')
+
     return matching_faces

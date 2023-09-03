@@ -1,13 +1,11 @@
 import os
 from platform import win32_ver
 import cv2
-import sys
 import types
 from gui_init import initUI
 from PyQt6.QtWidgets import QMainWindow, QFileDialog, QMessageBox, QTableWidgetItem, QWidget, QHBoxLayout, QCheckBox
 from PyQt6.QtGui import QImage, QPixmap
 from PyQt6.QtCore import Qt
-from face_detection import save_faces_from_folder, find_matching_face
 from gui_elements import NumericTableWidgetItem, MatchTableWidgetItem
 from PyQt6.QtGui import QAction
 from FaceProcessingThread import FaceProcessingThread
@@ -450,7 +448,6 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def update_progress_bar(self, progress):
-        print(f"update_progress_bar in face_matcher_app_class called with: {progress}")
         try:
             self.progress_bar.setValue(int(progress))
         except Exception as e:
@@ -505,36 +502,53 @@ class FaceMatcherApp(QMainWindow):
         if not path:
             return
 
-        with open(path, 'w', newline='') as csv_file:
-            writer = csv.writer(csv_file)
-            # Write headers
-            headers = [self.result_table.horizontalHeaderItem(i).text() for i in range(self.result_table.columnCount())]
-            writer.writerow(headers)
-            # Write data
-            for row in range(self.result_table.rowCount()):
-                row_data = [self.result_table.item(row, col).text() for col in range(self.result_table.columnCount())]
-                writer.writerow(row_data)
+        try:
+            with open(path, 'w', newline='') as csv_file:
+                writer = csv.writer(csv_file)
+                # Write headers
+                headers = [self.result_table.horizontalHeaderItem(i).text() if self.result_table.horizontalHeaderItem(i) else "" for i in range(self.result_table.columnCount())]
+                writer.writerow(headers)
+                # Write data
+                for row in range(self.result_table.rowCount()):
+                    row_data = [self.result_table.item(row, col).text() if self.result_table.item(row, col) else "" for col in range(self.result_table.columnCount())]
+                    writer.writerow(row_data)
+            QMessageBox.information(self, "Success", "Exported to CSV successfully!")   
+
+        except Exception as e:
+            print(f"Error exporting to CSV: {e}")
+            QMessageBox.critical(self, "Error", f"Failed to export to CSV: {e}")
+
 
     def export_table_to_html(self):
         path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "HTML Files (*.html)")
         if not path:
             return
 
-        html_content = "<table border='1'>\n"
-        
-        # Headers
-        html_content += "<thead>\n<tr>\n"
-        for i in range(self.result_table.columnCount()):
-            html_content += f"<th>{self.result_table.horizontalHeaderItem(i).text()}</th>\n"
-        html_content += "</tr>\n</thead>\n<tbody>\n"
-        
-        # Rows
-        for row in range(self.result_table.rowCount()):
-            html_content += "<tr>\n"
-            for col in range(self.result_table.columnCount()):
-                html_content += f"<td>{self.result_table.item(row, col).text()}</td>\n"
-            html_content += "</tr>\n"
-        html_content += "</tbody>\n</table>"
+        try:
+            html_content = "<table border='1'>\n"
+            
+            # Headers
+            html_content += "<thead>\n<tr>\n"
+            for i in range(self.result_table.columnCount()):
+                header_item = self.result_table.horizontalHeaderItem(i)
+                header_text = header_item.text() if header_item else ""
+                html_content += f"<th>{header_text}</th>\n"
+            html_content += "</tr>\n</thead>\n<tbody>\n"
+            
+            # Rows
+            for row in range(self.result_table.rowCount()):
+                html_content += "<tr>\n"
+                for col in range(self.result_table.columnCount()):
+                    item = self.result_table.item(row, col)
+                    cell_text = item.text() if item else ""
+                    html_content += f"<td>{cell_text}</td>\n"
+                html_content += "</tr>\n"
+            html_content += "</tbody>\n</table>"
 
-        with open(path, 'w') as html_file:
-            html_file.write(html_content)
+            with open(path, 'w') as html_file:
+                html_file.write(html_content)
+            QMessageBox.information(self, "Success", "Exported to HTML successfully!")
+
+        except Exception as e:
+            print(f"Error exporting to HTML: {e}")
+            QMessageBox.critical(self, "Error", f"Failed to export to HTML: {e}")

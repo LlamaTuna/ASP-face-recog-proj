@@ -2,7 +2,7 @@ from PyQt6.QtCore import QThread, pyqtSignal
 from face_detection import save_faces_from_folder, find_matching_face, face_detector  # Import face_detector
 import logging
 import traceback
-import threading
+# import threading
 from PyQt6.QtCore import pyqtSignal
 
 class FaceProcessingThread(QThread):
@@ -44,5 +44,4 @@ class FaceProcessingThread(QThread):
             self.error_signal.emit(error_message)
 
     def update_progress(self, progress):
-        print(f"update_progress called in FaceProcessingThread with: {progress}, current thread: {threading.current_thread()}")
         self.progress_signal.emit(int(progress))
