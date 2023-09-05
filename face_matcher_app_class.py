@@ -319,6 +319,10 @@ class FaceMatcherApp(QMainWindow):
 
             self.clear_outputs_and_data()
 
+            # enable cancel button and set progress bar to zero
+            self.cancel_button.setEnabled(True)
+            self.update_progress_bar(0)
+
             # Restore the image path and reload the thumbnail
             self.image_to_search_edit.setText(image_to_search_path)
             self.load_image_thumbnail(image_to_search_path)

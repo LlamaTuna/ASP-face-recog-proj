@@ -21,3 +21,4 @@ Scripts
 dist/
 build/
 face_matcher_ASP_5.0.spec
+/.vs
