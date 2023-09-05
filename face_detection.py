@@ -11,6 +11,36 @@ from tensorflow.keras.applications.resnet import ResNet152, preprocess_input
 from PIL import Image
 import PIL.ExifTags
 
+
+def is_hidden(filepath):
+
+    """ 
+    Check if a given filepath corresponds to a hidden file.
+    For UNIX-like systems, a file is considered hidden if its name starts with a dot.
+    For Windows, the function checks for the FILE_ATTRIBUTE_HIDDEN attribute.
+    """
+    try:
+        # For Windows
+        import os
+        import ctypes
+
+        attrs = ctypes.windll.kernel32.GetFileAttributesW(str(filepath))
+        assert attrs != -1
+
+        result = attrs & 2  # FILE_ATTRIBUTE_HIDDEN = 2
+
+        # If the path has the FILE_ATTRIBUTE_HIDDEN attribute set, it's hidden
+        if result:
+            return True
+
+    except (ImportError, AttributeError, AssertionError):
+        # For UNIX-like systems
+        # If the basename of the path starts with a dot, it's hidden
+        if os.path.basename(filepath).startswith('.'):
+            return True
+
+    return False
+
 try:
     logging.basicConfig(filename=r'.\debug.log',
                         filemode='w',
@@ -33,12 +63,18 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 def is_valid_image_extension(file_path):
+    """ 
+    Check if the given file path has a valid image extension.
+    """
     valid_extensions = ['.png', '.jpeg', '.jpg', '.bmp']
     ext = os.path.splitext(file_path)[-1].lower()
     return ext in valid_extensions
 
 
 def convert_to_decimal(coord, direction):
+    """ 
+    Convert GPS coordinates to decimal format.
+    """
     degrees, minutes, seconds = coord
     decimal = degrees + minutes / 60 + seconds / 3600
     if direction in ['S', 'W']:
@@ -46,6 +82,9 @@ def convert_to_decimal(coord, direction):
     return float(decimal)
 
 def get_image_exif_data(image_path):
+    """
+    Extract EXIF data from the provided image path.
+    """
     try:
         img_obj = Image.open(image_path)
         exif_data = img_obj._getexif()
@@ -78,8 +117,10 @@ def get_image_exif_data(image_path):
         logger.exception(f'Error while reading EXIF data from {image_path}')
         return {}
 
-#added face alignment function to increase accuracy.
 def align_face(face_img, left_eye, right_eye):
+    """
+    Align the face image such that the eyes are horizontally aligned.
+    """
     # Calculate the angle between the two eyes
     dx = right_eye[0] - left_eye[0]
     dy = right_eye[1] - left_eye[1]
@@ -98,6 +139,9 @@ def align_face(face_img, left_eye, right_eye):
     return aligned_face
 
 def resize_image_with_aspect_ratio(img, size):
+    """
+    Resize an image while maintaining its aspect ratio.
+    """
     try:
         # Get the aspect ratio
         aspect_ratio = img.shape[1] / img.shape[0]
@@ -134,6 +178,9 @@ def resize_image_with_aspect_ratio(img, size):
         return None
 
 def convert_image_to_vector(img):
+    """
+    Convert an image to a feature vector using the ResNet152 model.
+    """
     try:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = np.expand_dims(img, axis=0)
@@ -149,6 +196,9 @@ def convert_image_to_vector(img):
         raise e
 
 def save_faces_from_folder(folder_path, output_folder, face_detector, progress_callback=None, cancel_flag=None, partial_update_callback=None):
+    """
+    Detect and save faces from all images within the provided folder path.
+    """
     face_data = {}
     valid_extensions = ['.png', '.jpeg', '.jpg', '.bmp']
     processed_images = set()  # Keep track of processed images
@@ -157,7 +207,7 @@ def save_faces_from_folder(folder_path, output_folder, face_detector, progress_c
     # Use os.walk to traverse directories
     image_paths = [os.path.join(root, name)
                    for root, dirs, files in os.walk(folder_path)
-                   for name in files
+                   for name in files if not is_hidden(os.path.join(root, name))
                    if os.path.splitext(name)[-1].lower() in valid_extensions]
 
     num_images = len(image_paths)
@@ -266,7 +316,10 @@ def save_faces_from_folder(folder_path, output_folder, face_detector, progress_c
 
     return face_data
 
-def find_matching_face(image_path, face_data, face_detector, threshold=.55):
+def find_matching_face(image_path, face_data, face_detector, threshold=.75):
+    """
+    Find faces in the provided image that match with any face from the given face data.
+    """
     logger.debug(f'Starting to find matching face for image at {image_path}')
     matching_faces = []
     try:
@@ -327,3 +380,4 @@ def find_matching_face(image_path, face_data, face_detector, threshold=.55):
         print('No matching faces found for the image.')
 
     return matching_faces
+

@@ -1,3 +1,4 @@
+# This module handles the console output for the application.
 from PyQt6.QtWidgets import QTextEdit, QVBoxLayout, QWidget
 from PyQt6.QtCore import QThread, pyqtSignal
 import sys

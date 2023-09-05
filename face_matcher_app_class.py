@@ -27,6 +27,12 @@ except Exception as e:
 logger = logging.getLogger()
 
 class FaceMatcherApp(QMainWindow):
+    """
+    Initializes the FaceMatcherApp main window.
+    
+    Parameters:
+    - face_data (dict, optional): Data related to the faces. Defaults to None.
+    """
     def __init__(self, face_data=None):
         super().__init__()
         self.face_data = face_data
@@ -37,8 +43,10 @@ class FaceMatcherApp(QMainWindow):
         self.result_table.cellDoubleClicked.connect(self.open_image_in_default_viewer)
         self.matching_faces = []
 
-
     def create_menu_bar(self):
+        """
+        Creates the menu bar for the application's main window.
+        """        
         try:
             menubar = self.menuBar()
 
@@ -74,12 +82,14 @@ class FaceMatcherApp(QMainWindow):
             help_action.triggered.connect(self.help_dialogue)
             help_menu.addAction(help_action)
             
-
         except Exception as e:
             logging.exception("An error occurred while creating the menu bar")
             raise e
 
     def help_dialogue(self):
+        """ 
+        Displays help message from menu bar selection.
+        """
         help_message = ("Welcome to Face Finder.\n\n"
         "1. Select an image of a face you wish to search for.\n"
         "2. Select a directory containing images you wish to analyse.\n"
@@ -97,6 +107,15 @@ class FaceMatcherApp(QMainWindow):
         help_text.exec()
 
     def get_matched_face_by_row(self, row):
+        """
+        Retrieves the matched face image based on the provided table row index.
+        
+        Parameters:
+        - row (int): Index of the row in the results table.
+        
+        Returns:
+        Image or None: The matched face image or None if not found.
+        """        
         if row >= 0 and row < self.result_table.rowCount():
             resized_image_name = self.result_table.item(row, 4).text()
             matched_face_path = os.path.join(self.output_folder_edit.text(), resized_image_name)
@@ -106,6 +125,9 @@ class FaceMatcherApp(QMainWindow):
         return None
 
     def previous_matched_face(self):
+        """
+        Displays the matched face from the previous row in the results table.
+        """        
         try:
             current_row = self.result_table.currentRow()
             if current_row > 0:
@@ -120,6 +142,9 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def next_matched_face(self):
+        """
+        Displays the matched face from the next row in the results table.
+        """
         try:
             current_row = self.result_table.currentRow()
             if current_row < self.result_table.rowCount() - 1:
@@ -134,6 +159,10 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def on_result_table_selection_changed(self):
+        """
+        Handles the event when the selection in the results table changes. It displays relevant data 
+        for the selected face.
+        """
         try:
             current_row = self.result_table.currentRow()
             if current_row != -1:
@@ -147,7 +176,7 @@ class FaceMatcherApp(QMainWindow):
                 # print the face_info to the console
                 print(face_info)
 
-                # Also, you can display it in any widget you want like QTextEdit
+ 
                 self.console_output.append("\nSelected face:")
                 self.console_output.append(f"\nImage file: {face_info.get('file_name', 'N/A')}")
 
@@ -162,7 +191,7 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while handling the selection change in the result table")
             raise e
 
-    def on_table_selection_changed_and_display_face(self):  # renamed this method
+    def on_table_selection_changed_and_display_face(self): 
         try:
             self.display_selected_matched_face()
         except Exception as e:
@@ -170,6 +199,9 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def toggle_dark_theme(self):
+        """
+        Toggles the UI theme between dark and light.
+        """
         try:
             if self.dark_theme_enabled:
                 self.dark_theme_enabled = False
@@ -182,6 +214,9 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def browse_input_folder(self):
+        """
+        Opens a dialog to select an output folder and updates the output folder text field.
+        """
         try:
             print("Browsing input folder")
             input_folder = QFileDialog.getExistingDirectory(self, 'Select Input Folder')
@@ -193,6 +228,9 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def browse_output_folder(self):
+        """
+        Opens a dialog to select an output folder and updates the output folder text field.
+        """
         try:
             print("Browsing output folder")
             output_folder = QFileDialog.getExistingDirectory(self, 'Select Output Folder')
@@ -204,6 +242,9 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def browse_image_to_search(self):
+        """
+        Opens a dialog to select an image to search for and updates the related text field and preview.
+        """
         try:
             print("Browsing image to search")
             file_path, _ = QFileDialog.getOpenFileName(self, 'Select Image to Search', '', 'Image files (*.png *.jpeg *.jpg *.bmp *.tiff)')
@@ -216,6 +257,12 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def load_image_thumbnail(self, file_path):
+        """
+        Loads and displays a thumbnail of the image at the given file path.
+        
+        Parameters:
+        - file_path (str): Path to the image file.
+        """
         try:
             print("Loading image thumbnail")
             image = QImage(file_path)
@@ -228,6 +275,14 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def display_matched_face(self, matched_face, similarity, original_image_name):
+        """
+        Displays a matched face image, its similarity score, and the name of the original image.
+        
+        Parameters:
+        - matched_face (Image): The matched face image.
+        - similarity (float): Similarity score between 0 and 1.
+        - original_image_name (str): Name of the original image where the face was found.
+        """
         try:
             if matched_face is None:
                 print("Error: Matched face is None. Cannot display.")
@@ -253,6 +308,9 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def find_match(self):
+        """
+        Initiates the process of finding matching faces based on the user's input.
+        """
         try:
             logging.debug("Starting find_match")
 
@@ -298,12 +356,18 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def select_output_directory(self):
+        """
+        Opens a dialog to select an output directory where matching photos will be copied.
+        """
         self.output_directory = QFileDialog.getExistingDirectory(self, "Select Output Directory")
         if not self.output_directory:
             # User canceled the dialog or an error occurred
             return
 
     def copy_matching_photos(self):
+        """
+        Copies the photos with faces that match the criteria to the selected output directory.
+        """
         if not self.output_directory:
             QMessageBox.critical(self, "Error", "Please select an output directory.")
             return
@@ -318,13 +382,21 @@ class FaceMatcherApp(QMainWindow):
 
         QMessageBox.information(self, "Done", "Photos copied successfully!")
 
-
     def show_error_message(self, message):
+        """
+        Displays an error message in a popup dialog.
+        
+        Parameters:
+        - message (str): The error message to display.
+        """
         QMessageBox.critical(self, "Error", message)
         self.cancel_button.setEnabled(False)  # Disable the Cancel button here too
 
 
     def cancel_face_processing(self):
+        """
+        Cancels the ongoing face processing operation.
+        """
         if hasattr(self, 'face_processing_thread') and self.face_processing_thread.isRunning():
             self.face_processing_thread.cancel_processing()
             QMessageBox.information(self, "Info", "Face processing has been cancelled.")
@@ -333,6 +405,12 @@ class FaceMatcherApp(QMainWindow):
         self.cancel_button.setEnabled(True)   # To enable
     
     def on_face_processing_done(self, result):
+        """
+        Handles the event when face processing is done. Updates the UI with the results.
+        
+        Parameters:
+        - result (tuple): Contains matching faces and face data.
+        """
         try:
             self.matching_faces, self.face_data = result
             logging.debug("Processing finished")
@@ -386,13 +464,18 @@ class FaceMatcherApp(QMainWindow):
             logging.exception("An error occurred while handling the face processing done event")
             raise e
 
-
     def browse_output_directory(self):
+        """
+        Opens a dialog to select an output directory and updates the related text field.
+        """
         output_directory = QFileDialog.getExistingDirectory(self, 'Select Output Directory')
         if output_directory:
             self.output_directory_edit.setText(output_directory)
 
     def export_tagged_photos(self):
+        """
+        Exports photos tagged by the user to the selected output directory.
+        """
         output_directory = self.output_directory_edit.text()
         if not output_directory:
             QMessageBox.warning(self, "Warning", "Please select an output directory first!")
@@ -411,10 +494,10 @@ class FaceMatcherApp(QMainWindow):
 
         QMessageBox.information(self, "Done", "Tagged photos exported successfully!")
 
-
-
-
     def display_selected_matched_face(self):
+        """
+        Displays the matched face image for the currently selected row in the results table.
+        """
         try:
             current_row = self.result_table.currentRow()
             if current_row != -1:
@@ -448,6 +531,12 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def update_progress_bar(self, progress):
+        """
+        Updates the progress bar with the given progress value.
+        
+        Parameters:
+        - progress (int): Progress value between 0 and 100.
+        """
         try:
             self.progress_bar.setValue(int(progress))
         except Exception as e:
@@ -462,6 +551,13 @@ class FaceMatcherApp(QMainWindow):
             raise e
 
     def open_image_in_default_viewer(self, row, column):
+        """
+        Opens the image in the default viewer when the corresponding cell in the results table is double-clicked.
+        
+        Parameters:
+        - row (int): The row index of the double-clicked cell.
+        - column (int): The column index of the double-clicked cell.
+        """
         if column == 3: 
             original_image_full_path = self.result_table.item(row, 3).text()
             print(original_image_full_path)
@@ -473,6 +569,9 @@ class FaceMatcherApp(QMainWindow):
                 QMessageBox.critical(self, "Error", f"File not found: {original_image_full_path}")
         
     def clear_outputs_and_data(self):
+        """
+        Clears all outputs in the UI and internal data structures.
+        """
         # Clear the table
         self.result_table.setRowCount(0)
         self.result_table.setColumnCount(0)
@@ -498,6 +597,9 @@ class FaceMatcherApp(QMainWindow):
     
 
     def export_table_to_csv(self):
+        """
+        Exports the results table to a CSV file.
+        """
         path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "CSV Files (*.csv)")
         if not path:
             return
@@ -520,6 +622,9 @@ class FaceMatcherApp(QMainWindow):
 
 
     def export_table_to_html(self):
+        """
+        Exports the results table to an HTML file.
+        """
         path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "HTML Files (*.html)")
         if not path:
             return

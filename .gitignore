@@ -1,6 +1,8 @@
 ASP-face-recog/
 
 debug.log
+face_finder_gitstats.json
+
 
 # Ignore Python binaries
 *.pyc
