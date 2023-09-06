@@ -93,7 +93,7 @@ class FaceMatcherApp(QMainWindow):
         help_message = ("Welcome to Face Finder.\n\n"
         "1. Select an image of a face you wish to search for.\n"
         "2. Select a directory containing images you wish to analyse.\n"
-        "3. Select an ouput directory to place any images of faces found.\n"
+        "3. Select an output directory to place any images of faces found.\n"
         "4. Press find match and face finder will commence its analysis.\n\n"
         "All images in the selected directory and any sub-directories will be analysed.\n\n"
         "Faces in which the algorithms compute to be similar enough will be placed in the output directory and entered in the results table along with any available location and timestamp data.\n\n"
@@ -373,16 +373,19 @@ class FaceMatcherApp(QMainWindow):
         Copies the photos with faces that match the criteria to the selected output directory.
         """
         if not self.output_directory:
-            QMessageBox.critical(self, "Error", "Please select an output directory.")
+            QMessageBox.warning(self, "Warning", "Please select an output directory first.")
             return
 
         threshold = self.similarity_threshold_spinbox.value() / 100.0  # Convert back to a fraction
 
         for img_hash, file_name, _, similarity, _ in self.matching_faces:
             if similarity >= threshold:
-                src_path = os.path.join(self.input_folder_edit.text(), file_name)
-                dest_path = os.path.join(self.output_directory, file_name)
-                shutil.copy2(src_path, dest_path)
+                try:
+                        src_path = os.path.join(self.input_folder_edit.text(), file_name)
+                        dest_path = os.path.join(self.output_directory, file_name)
+                        shutil.copy2(src_path, dest_path)
+                except:
+                    print(f'Error, unable to locate file:  {file_name}')
 
         QMessageBox.information(self, "Done", "Photos copied successfully!")
 
