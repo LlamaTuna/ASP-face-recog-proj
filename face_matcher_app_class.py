@@ -1,3 +1,4 @@
+print("Loading Application...") # inform user applcation is loading
 import os
 from platform import win32_ver
 import cv2
@@ -20,11 +21,13 @@ try:
                         level=logging.DEBUG,
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     logging.debug('Logging setup successful')
-    print("Logging setup successful.")
+    print("Logging setup2 successful.")
 except Exception as e:
     print(f"Logging setup failed: {str(e)}")
 
 logger = logging.getLogger()
+
+print("Application loaded.")
 
 class FaceMatcherApp(QMainWindow):
     """

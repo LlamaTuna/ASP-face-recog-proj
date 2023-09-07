@@ -5,7 +5,9 @@ import cv2
 #import sys
 import hashlib
 import numpy as np
+print("Loading MTCNN Face Recognition...")
 from mtcnn import MTCNN
+print("MTCNN Face Recognition loaded.")
 from scipy.spatial import distance
 from tensorflow.keras.applications.resnet import ResNet152, preprocess_input
 from PIL import Image
@@ -47,7 +49,7 @@ try:
                         level=logging.DEBUG,
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     logging.debug('Logging setup successful')
-    print("Logging setup successful.")
+    print("Logging setup1 successful.")
 except Exception as e:
     print(f"Logging setup failed: {str(e)}")
 
@@ -55,8 +57,9 @@ logger = logging.getLogger()
 
 output_folder = "./output/"
 face_detector = MTCNN()
+print("Initialising Resnet models...")
 resnet_model = ResNet152(weights='imagenet', include_top=False)
-print('Models initialized successfully.')
+print('Resnet models initialized successfully.')
 
 # Create output directory if it doesn't exist
 if not os.path.exists(output_folder):
