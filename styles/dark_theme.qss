@@ -149,4 +149,11 @@ QMessageBox {
     color: #FFFFFF;
 }
 
-
+/* styling for QDoubleSpinBox in dark theme */
+QDoubleSpinBox {
+    background-color: #030303;  /* Dark background */
+    color: #FFFFFF;             /* Light text */
+    border: 1px solid #5A5A5A;  /* Border color */
+    border-radius: 5px;         /* Radiused border */
+    padding: 2px;
+}

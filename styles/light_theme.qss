@@ -139,3 +139,12 @@ QProgressBar {
     border: 1px solid #14386a;
     background-color: #f3f3f3;
 }
+
+/* styling for QDoubleSpinBox in light theme */
+QDoubleSpinBox {
+    background-color: #f3f3f3;  /* Light background */
+    color: #000000;             /* Dark text */
+    border: 1px solid #5A5A5A;  /* Border color */
+    border-radius: 5px;         /* Radiused border */
+    padding: 2px;
+}

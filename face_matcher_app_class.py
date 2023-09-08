@@ -366,16 +366,17 @@ class FaceMatcherApp(QMainWindow):
         """
         Opens a dialog to select an output directory where matching photos will be copied.
         """
-        self.output_directory = QFileDialog.getExistingDirectory(self, "Select Output Directory")
-        if not self.output_directory:
-            # User canceled the dialog or an error occurred
-            return
+        directory = QFileDialog.getExistingDirectory(self, "Select Output Directory")
+        if directory:
+            self.sim_output_directory_edit.setText(directory)
 
     def copy_matching_photos(self):
         """
         Copies the photos with faces that match the criteria to the selected output directory.
         """
-        if not self.output_directory:
+        output_directory = self.sim_output_directory_edit.text()
+        
+        if not output_directory:
             QMessageBox.warning(self, "Warning", "Please select an output directory first.")
             return
 
@@ -385,12 +386,22 @@ class FaceMatcherApp(QMainWindow):
             if similarity >= threshold:
                 try:
                         src_path = os.path.join(self.input_folder_edit.text(), file_name)
-                        dest_path = os.path.join(self.output_directory, file_name)
+                        dest_path = os.path.join(output_directory, file_name)
                         shutil.copy2(src_path, dest_path)
                 except:
                     print(f'Error, unable to locate file:  {file_name}')
 
         QMessageBox.information(self, "Done", "Photos copied successfully!")
+
+    def browse_output_directory_for_similarity(self):
+        """
+        Lets the user browse for an output directory for similar images and updates the QLineEdit.
+        """
+        directory = QFileDialog.getExistingDirectory(self, "Select Output Directory")
+        
+        if directory:
+            # Set the directory path to the QLineEdit
+            self.sim_output_directory_edit.setText(directory)
 
     def show_error_message(self, message):
         """

@@ -132,14 +132,21 @@ def initUI(self):
         right_panel_layout.addWidget(similarity_label) 
         right_panel_layout.addWidget(self.similarity_threshold_spinbox)
 
-        # Output directory and image copy buttons in right panel
-        self.select_output_directory_button = QPushButton("Select Output Directory", self)
-        self.select_output_directory_button.clicked.connect(self.select_output_directory)
-        right_panel_layout.addWidget(self.select_output_directory_button)
-        self.copy_photos_button = QPushButton("Copy Matching Images", self)
+        # Output directory for similar images in right panel
+        sim_output_directory_layout = QHBoxLayout()
+        sim_dir_label = QLabel('Select a folder to copy similar images to.')
+        right_panel_layout.addWidget(sim_dir_label)
+        self.sim_output_directory_edit = QLineEdit()
+        sim_output_directory_button = QPushButton('Browse')
+        sim_output_directory_button.clicked.connect(self.browse_output_directory_for_similarity)
+        sim_output_directory_layout.addWidget(QLabel('Output Folder:'))
+        sim_output_directory_layout.addWidget(self.sim_output_directory_edit)
+        sim_output_directory_layout.addWidget(sim_output_directory_button)
+        right_panel_layout.addLayout(sim_output_directory_layout)
+
+        self.copy_photos_button = QPushButton("Copy Similar Images", self)
         self.copy_photos_button.clicked.connect(self.copy_matching_photos)
         right_panel_layout.addWidget(self.copy_photos_button)
-        self.output_directory = None
 
         # Tagged image output directory and export button in right panel
         output_directory_layout = QHBoxLayout()
@@ -148,7 +155,7 @@ def initUI(self):
         self.output_directory_edit = QLineEdit()
         output_directory_button = QPushButton('Browse')
         output_directory_button.clicked.connect(self.browse_output_directory)
-        output_directory_layout.addWidget(QLabel('Output Directory:'))
+        output_directory_layout.addWidget(QLabel('Output Folder:'))
         output_directory_layout.addWidget(self.output_directory_edit)
         output_directory_layout.addWidget(output_directory_button)
         right_panel_layout.addLayout(output_directory_layout)
