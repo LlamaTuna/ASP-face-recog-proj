@@ -5,47 +5,50 @@ Initialize the GUI elements
 
 from PyQt6.QtWidgets import  QSplitter, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QProgressBar, QTableWidget
 from PyQt6.QtCore import Qt
-from face_detection import save_faces_from_folder, find_matching_face
 from PyQt6.QtWidgets import QStyle
 from PyQt6.QtWidgets import QHBoxLayout
 from console_output import ConsoleWidget
+from PyQt6.QtWidgets import QDoubleSpinBox
 import logging
 import os
 import sys
 
+
 def initUI(self):
+    """
+    Initialize the main user interface components for the 'Face Finder' application.
+    """
     try:
         self.setWindowTitle('Face Finder')
         self.create_menu_bar()
 
-        # CB - set initial stylesheet to light
+        # Check if we are running in a bundled app or regular Python environment 
+        # to correctly set the theme path
         if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-            # Running in a PyInstaller bundle
             bundle_dir = sys._MEIPASS
         else:
-            # Running in a normal Python environment
             bundle_dir = os.path.dirname(os.path.abspath(__file__))
 
+        # Load the light theme stylesheet
         light_theme_path = os.path.join(bundle_dir, "styles", "light_theme.qss")
-        self.setStyleSheet(load_stylesheet(light_theme_path)) # CB removed replace
+        self.setStyleSheet(load_stylesheet(light_theme_path))
 
+        # Define the central widget and layout
         main_widget = QWidget()
         self.setCentralWidget(main_widget)
-
         main_layout = QVBoxLayout(main_widget)
 
+        # Create a horizontal splitter for left and right panels
         top_splitter = QSplitter(Qt.Orientation.Horizontal)
         left_panel_widget = QWidget()
         right_panel_widget = QWidget()
-
         top_splitter.addWidget(left_panel_widget)
         top_splitter.addWidget(right_panel_widget)
 
         left_panel_layout = QVBoxLayout(left_panel_widget)
         right_panel_layout = QVBoxLayout(right_panel_widget)
 
-        
-        # Image to search
+        # Image search section in left panel
         image_to_search_layout = QHBoxLayout()
         self.image_to_search_edit = QLineEdit()
         image_to_search_button = QPushButton('Browse')
@@ -55,7 +58,7 @@ def initUI(self):
         image_to_search_layout.addWidget(image_to_search_button)
         left_panel_layout.addLayout(image_to_search_layout)
 
-        # Input folder
+        # Input folder section in left panel
         input_folder_layout = QHBoxLayout()
         self.input_folder_edit = QLineEdit()
         input_folder_button = QPushButton('Browse')
@@ -65,7 +68,7 @@ def initUI(self):
         input_folder_layout.addWidget(input_folder_button)
         left_panel_layout.addLayout(input_folder_layout)
 
-        # Output folder
+        # Output folder section in left panel
         output_folder_layout = QHBoxLayout()  
         self.output_folder_edit = QLineEdit()
         output_folder_button = QPushButton('Browse')
@@ -75,65 +78,104 @@ def initUI(self):
         output_folder_layout.addWidget(output_folder_button)
         left_panel_layout.addLayout(output_folder_layout)
 
-
-        # Find match button
+        # Find and cancel match buttons in left panel
+        match_buttons_layout = QHBoxLayout()
         find_match_button = QPushButton('Find match')
         find_match_button.clicked.connect(self.find_match)
-        left_panel_layout.addWidget(find_match_button)
+        match_buttons_layout.addWidget(find_match_button)
+        self.cancel_button = QPushButton("Cancel")
+        self.cancel_button.clicked.connect(self.cancel_face_processing)
+        match_buttons_layout.addWidget(self.cancel_button) 
+        left_panel_layout.addLayout(match_buttons_layout)
 
-        # Image preview
+        # Image preview in left panel
         self.image_preview_label = QLabel()
         self.image_preview_label.setObjectName('image_preview_label')
         left_panel_layout.addWidget(self.image_preview_label)
 
-        # Progress bar
+        # Progress bar in left panel
         left_panel_layout.addWidget(QLabel('Progress:'))
         self.progress_bar = QProgressBar()
         left_panel_layout.addWidget(self.progress_bar)
 
-        # Add arrow buttons and similarity/original image name label
+        # Thumbnail navigation (left and right arrows) in left panel
         self.left_arrow_button = QPushButton()
         self.left_arrow_button.setObjectName('left_arrow_button')
         self.left_arrow_button.setIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_ArrowLeft))
         self.left_arrow_button.clicked.connect(self.previous_matched_face)
-
         self.right_arrow_button = QPushButton()
         self.right_arrow_button.setObjectName('right_arrow_button')
         self.right_arrow_button.setIcon(self.style().standardIcon(QStyle.StandardPixmap.SP_ArrowRight))
         self.right_arrow_button.clicked.connect(self.next_matched_face)
-
         arrows_layout = QHBoxLayout()
         arrows_layout.addWidget(self.left_arrow_button)
-            
-        # Matched face thumbnail
         self.matched_face_label = QLabel()
         self.matched_face_label.setObjectName('matched_face_label')
-            
         arrows_layout.addWidget(self.matched_face_label)
         arrows_layout.addWidget(self.right_arrow_button)
         left_panel_layout.addLayout(arrows_layout)
 
-        # image name and similarity text
+        # Similarity and original image label in left panel
         self.similarity_original_image_label = QLabel()
         self.similarity_original_image_label.setObjectName('similarity_original_image_label')
         self.similarity_original_image_label.setWordWrap(True)
         left_panel_layout.addWidget(self.similarity_original_image_label)
-        
-        # Console output
-        console_widget = ConsoleWidget()
-        right_panel_layout.addWidget(console_widget)
-        console_widget.start_console_output_thread()
 
-        # Add top_splitter to main_layout
+        # Console output in right panel
+        self.console_widget = ConsoleWidget()
+        right_panel_layout.addWidget(self.console_widget)
+        self.console_widget.start_console_output_thread()
+
+        # Image similarity threshold in right panel
+        self.similarity_threshold_spinbox = QDoubleSpinBox(self)
+        self.similarity_threshold_spinbox.setRange(0, 100)
+        self.similarity_threshold_spinbox.setSingleStep(1)
+        self.similarity_threshold_spinbox.setValue(90)
+        self.similarity_threshold_spinbox.setFixedWidth(100)
+        self.similarity_threshold_spinbox.setSuffix('%')
+        similarity_label = QLabel('Enter the minimum similarity percentage for images to copy.')
+        right_panel_layout.addWidget(similarity_label) 
+        right_panel_layout.addWidget(self.similarity_threshold_spinbox)
+
+        # Output directory for similar images in right panel
+        sim_output_directory_layout = QHBoxLayout()
+        sim_dir_label = QLabel('Select a folder to copy similar images to.')
+        right_panel_layout.addWidget(sim_dir_label)
+        self.sim_output_directory_edit = QLineEdit()
+        sim_output_directory_button = QPushButton('Browse')
+        sim_output_directory_button.clicked.connect(self.browse_output_directory_for_similarity)
+        sim_output_directory_layout.addWidget(QLabel('Output Folder:'))
+        sim_output_directory_layout.addWidget(self.sim_output_directory_edit)
+        sim_output_directory_layout.addWidget(sim_output_directory_button)
+        right_panel_layout.addLayout(sim_output_directory_layout)
+
+        self.copy_photos_button = QPushButton("Copy Similar Images", self)
+        self.copy_photos_button.clicked.connect(self.copy_matching_photos)
+        right_panel_layout.addWidget(self.copy_photos_button)
+
+        # Tagged image output directory and export button in right panel
+        output_directory_layout = QHBoxLayout()
+        tags_label = QLabel('Select an output folder for any tagged images from table.')
+        right_panel_layout.addWidget(tags_label)
+        self.output_directory_edit = QLineEdit()
+        output_directory_button = QPushButton('Browse')
+        output_directory_button.clicked.connect(self.browse_output_directory)
+        output_directory_layout.addWidget(QLabel('Output Folder:'))
+        output_directory_layout.addWidget(self.output_directory_edit)
+        output_directory_layout.addWidget(output_directory_button)
+        right_panel_layout.addLayout(output_directory_layout)
+        export_tags_button = QPushButton('Copy Tagged Images')
+        export_tags_button.clicked.connect(self.export_tagged_photos)
+        right_panel_layout.addWidget(export_tags_button)
+
+        # Add the top splitter to the main layout
         main_layout.addWidget(top_splitter)
 
-        # Table should be in the main layout, not in the left panel
+        # Results table below the top splitter
         self.result_table = QTableWidget(self)
         self.result_table.itemSelectionChanged.connect(self.on_result_table_selection_changed)
         self.result_table.setSortingEnabled(True)
-        self.result_table.verticalHeader().setDefaultSectionSize(12);
-        
-        # Add table to main_layout
+        self.result_table.verticalHeader().setDefaultSectionSize(12)
         main_layout.addWidget(self.result_table)
 
     except Exception as e:
@@ -141,6 +183,15 @@ def initUI(self):
         raise e
 
 def load_stylesheet(file_path):
+    """
+    Load a Qt stylesheet from the given file path.
+
+    Parameters:
+    - file_path (str): Path to the .qss stylesheet file.
+
+    Returns:
+    - str: The contents of the stylesheet file.
+    """
     try:
         with open(file_path, "r") as file:
             return file.read()
