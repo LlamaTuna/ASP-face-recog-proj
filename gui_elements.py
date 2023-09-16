@@ -1,3 +1,9 @@
+'''
+@file gui_elements.py
+Handles table elements in the GUI
+'''
+
+
 from PyQt6.QtWidgets import QTableWidgetItem
 
 class NumericTableWidgetItem(QTableWidgetItem):

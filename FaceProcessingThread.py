@@ -3,7 +3,6 @@
 Enables multi threading with worker and GUI threads for progress bar callback
 '''
 
-
 from PyQt6.QtCore import QThread, pyqtSignal
 from face_detection import save_faces_from_folder, find_matching_face, face_detector  # Import face_detector
 import logging
