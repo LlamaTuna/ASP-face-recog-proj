@@ -1,3 +1,8 @@
+'''
+@file main.py
+main function
+'''
+
 import sys
 import os
 from PyQt6.QtWidgets import QApplication  # Changed PyQt5 to PyQt6

@@ -8,7 +8,11 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
+<<<<<<< Updated upstream
     datas=[('ASP-face-recog\\Lib\\site-packages\\mtcnn\\data\\mtcnn_weights.npy', 'mtcnn/data'), ('styles\\dark_theme.qss', 'styles')],
+=======
+    datas=[('ASP-face-recog\\Lib\\site-packages\\mtcnn\\data\\mtcnn_weights.npy', 'mtcnn/data'), ('C:\\Users\\Saul_T_Lode\\ASP-face-recog-proj\\styles\\dark_theme.qss', 'styles/'), ('C:\\Users\\Saul_T_Lode\\ASP-face-recog-proj\\styles\\light_theme.qss', 'styles/')],
+>>>>>>> Stashed changes
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,7 +39,11 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
+<<<<<<< Updated upstream
     console=False,
+=======
+    console=True,
+>>>>>>> Stashed changes
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,

@@ -1,3 +1,12 @@
+<<<<<<< Updated upstream
+=======
+'''
+@file face_matcher_app_class.py
+GUI related functions to handle the UI, inputs, outputs, table, console, etc
+'''
+
+print("Loading Application...") # inform user applcation is loading
+>>>>>>> Stashed changes
 import os
 import cv2
 import sys

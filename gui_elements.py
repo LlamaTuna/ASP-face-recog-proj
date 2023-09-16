@@ -1,3 +1,8 @@
+'''
+@file gui_elements.py
+GUI parent classes for the GUI table
+'''
+
 from PyQt6.QtWidgets import QTableWidgetItem
 
 class NumericTableWidgetItem(QTableWidgetItem):

@@ -1,8 +1,15 @@
+'''
+@file face_detection.py
+Backend processing to detect faces, align them, resize and compare them.
+'''
 import logging
 import traceback
 import os
 import cv2
+<<<<<<< Updated upstream
 import sys
+=======
+>>>>>>> Stashed changes
 import hashlib
 import numpy as np
 from mtcnn import MTCNN

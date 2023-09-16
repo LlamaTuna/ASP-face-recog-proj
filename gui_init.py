@@ -1,3 +1,8 @@
+'''
+@file gui_init.py
+Initialize the GUI elements
+'''
+
 from PyQt6.QtWidgets import  QSplitter, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QProgressBar, QTableWidget
 from PyQt6.QtCore import Qt
 from face_detection import save_faces_from_folder, find_matching_face
